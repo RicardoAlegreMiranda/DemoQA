@@ -1,0 +1,14 @@
+
+Página abierta :https://demoqa.com/radio-button
+Encontrado XPATH //*[@id='noRadio']
+
+El atributo 'disabled' ha sido eliminado exitosamente.
+Click: //label[@class='custom-control-label disabled'][contains(.,'No')]
+
+Click: //label[@class='custom-control-label'][contains(.,'Yes')]
+
+Click: //label[@class='custom-control-label'][contains(.,'Impressive')]
+
+Realizada captura de pantalla 2023-04-12 11:58:33
+Realizada captura de pantalla 2023-04-12 11:58:38
+Fin de la prueba

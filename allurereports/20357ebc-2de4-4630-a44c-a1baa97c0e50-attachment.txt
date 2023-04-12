@@ -1,0 +1,54 @@
+
+Página abierta :https://demoqa.com/webtables
+Click: //button[contains(@id,'addNewRecordButton')]
+
+Escrito: Rodrigro En XPATH //input[contains(@id,'firstName')]
+
+Escrito: Fernandez En XPATH //input[contains(@id,'lastName')]
+
+Escrito: rodrigo-fernandez@prueba.com En XPATH //input[contains(@id,'userEmail')]
+
+No se ha podido escribir en elemento XPATH //input[contains(@id,'age')] el texto 42
+
+No se ha podido escribir en elemento XPATH //input[contains(@id,'salary')] el texto 25000
+
+Escrito: QA En XPATH //input[contains(@id,'department')]
+
+Click: //button[contains(@id,'submit')]
+
+Click: //button[contains(@id,'addNewRecordButton')]
+
+Escrito: Elena En XPATH //input[contains(@id,'firstName')]
+
+Escrito: Castillo En XPATH //input[contains(@id,'lastName')]
+
+Escrito: elena.castillo@test.com En XPATH //input[contains(@id,'userEmail')]
+
+No se ha podido escribir en elemento XPATH //input[contains(@id,'age')] el texto 35
+
+No se ha podido escribir en elemento XPATH //input[contains(@id,'salary')] el texto 30000
+
+Escrito: Managers En XPATH //input[contains(@id,'department')]
+
+Click: //button[contains(@id,'submit')]
+
+Click: //button[contains(@id,'addNewRecordButton')]
+
+Escrito: Silvia En XPATH //input[contains(@id,'firstName')]
+
+Escrito: Martin En XPATH //input[contains(@id,'lastName')]
+
+Escrito: smartin@test.com En XPATH //input[contains(@id,'userEmail')]
+
+No se ha podido escribir en elemento XPATH //input[contains(@id,'age')] el texto 29
+
+No se ha podido escribir en elemento XPATH //input[contains(@id,'salary')] el texto 18000
+
+Escrito: Support En XPATH //input[contains(@id,'department')]
+
+Click: //button[contains(@id,'submit')]
+
+Encontrado XPATH //*[@id='app']/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]
+
+Realizada captura de pantalla 2023-04-12 11:59:45
+Fin de la prueba

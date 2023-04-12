@@ -1,0 +1,5 @@
+
+Página abierta :https://demoqa.com/upload-download
+Click: //a[@id='downloadButton']
+
+Fin de la prueba

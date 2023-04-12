@@ -1,0 +1,11 @@
+class buttons:
+    URL = "https://demoqa.com/buttons"
+    doubleclick = "//button[contains(@id,'doubleClickBtn')]"
+    rightclick = "//*[@id='rightClickBtn']"
+    click = "/html/body/div[2]/div/div/div[2]/div[2]/div[2]/div[3]/button"
+    mensajeDoubleClick = "//p[contains(@id,'doubleClickMessage')]"
+    mensajeRightClik = "//p[contains(@id,'rightClickMessage')]"
+    mensajeClickMe = "//p[contains(@id,'dynamicClickMessage')]"
+    mensajeDobleClickOK = "You have done a double click"
+    mensajeRightClickOK = "You have done a right click"
+    mensajeClickOK = "You have done a dynamic click"

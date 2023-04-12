@@ -1,0 +1,9 @@
+
+Página abierta :https://demoqa.com/buttons
+Encontrado XPATH //button[contains(@id,'doubleClickBtn')]
+
+Encontrado XPATH //*[@id='rightClickBtn']
+
+Click: /html/body/div[2]/div/div/div[2]/div[2]/div[2]/div[3]/button
+
+Fin de la prueba

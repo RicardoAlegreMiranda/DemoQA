@@ -1,0 +1,9 @@
+
+Página abierta :https://demoqa.com/broken
+Encontrado XPATH (//img[@src='/images/Toolsqa.jpg'])[2]
+
+ancho 347 Alto 100
+Encontrado XPATH //img[@src='/images/Toolsqa_1.jpg']
+
+ancho 16 Alto 16
+Fin de la prueba

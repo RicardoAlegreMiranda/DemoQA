@@ -1,0 +1,22 @@
+
+Página abierta :https://demoqa.com/webtables
+Click: // *[ @ id = 'edit-record-2']
+
+Escrito: Roberto En XPATH //input[contains(@id,'firstName')]
+
+Escrito: Gonzalez En XPATH //input[contains(@id,'lastName')]
+
+Escrito: roberto@gmail.com En XPATH //input[contains(@id,'userEmail')]
+
+Escrito: 52 En XPATH //input[contains(@id,'age')]
+
+Escrito: 22000 En XPATH //input[contains(@id,'salary')]
+
+Escrito: RR.HH En XPATH //input[contains(@id,'department')]
+
+Click: //button[contains(@id,'submit')]
+
+Encontrado XPATH //*[@id='app']/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]
+
+Realizada captura de pantalla 2023-04-12 12:00:11
+Fin de la prueba

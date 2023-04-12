@@ -1,0 +1,60 @@
+
+Página abierta :https://demoqa.com/text-box
+Escrito: Ricardo En XPATH //input[contains(@id,'userName')]
+
+Escrito: ricardo@prueba.com En XPATH //input[contains(@id,'userEmail')]
+
+Escrito: C/Alcarria 42, 4ºB, Leganés (Madríd) En XPATH //textarea[contains(@id,'currentAddress')]
+
+Escrito: Null En XPATH //textarea[contains(@id,'permanentAddress')]
+
+Click: //button[contains(@id,'submit')]
+
+Realizada captura de pantalla 2023-04-12 11:58:46
+Encontrado XPATH //p[contains(@id,'name')]
+
+Encontrado XPATH //p[contains(@id,'email')]
+
+Encontrado XPATH //p[contains(@id,'currentAddress')]
+
+Encontrado XPATH //p[contains(@id,'permanentAddress')]
+
+Escrito: Juan En XPATH //input[contains(@id,'userName')]
+
+Escrito: juan@test.prueba.qa.es En XPATH //input[contains(@id,'userEmail')]
+
+Escrito: Plaza de España 3 En XPATH //textarea[contains(@id,'currentAddress')]
+
+Escrito: 6ºA En XPATH //textarea[contains(@id,'permanentAddress')]
+
+Click: //button[contains(@id,'submit')]
+
+Realizada captura de pantalla 2023-04-12 11:58:50
+Encontrado XPATH //p[contains(@id,'name')]
+
+Encontrado XPATH //p[contains(@id,'email')]
+
+Encontrado XPATH //p[contains(@id,'currentAddress')]
+
+Encontrado XPATH //p[contains(@id,'permanentAddress')]
+
+Escrito: María En XPATH //input[contains(@id,'userName')]
+
+Escrito: maria-qa@tester.com En XPATH //input[contains(@id,'userEmail')]
+
+Escrito: Av.De la lengua En XPATH //textarea[contains(@id,'currentAddress')]
+
+Escrito: 2º C, 08014, Barcelona En XPATH //textarea[contains(@id,'permanentAddress')]
+
+Click: //button[contains(@id,'submit')]
+
+Realizada captura de pantalla 2023-04-12 11:58:53
+Encontrado XPATH //p[contains(@id,'name')]
+
+Encontrado XPATH //p[contains(@id,'email')]
+
+Encontrado XPATH //p[contains(@id,'currentAddress')]
+
+Encontrado XPATH //p[contains(@id,'permanentAddress')]
+
+Fin de la prueba
