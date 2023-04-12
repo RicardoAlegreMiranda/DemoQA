@@ -4,7 +4,7 @@
 Este proyecto contiene el código fuente necesario para automatizar las pruebas de regresión de las funcionalidades de la Web pública https://demoqa.com/elements y https://demoqa.com/automation-practice-form
 
 
-Para las pruebas se utiliza un archivo Excel del cual se importan los datos de prueba, en cada hoja del Excel hay datos para las pruebas los cuales se pueden editar y cambiar por nuevos datos de prueba.
+Para las pruebas se utiliza un archivo Excel del cual se importan los datos de prueba, en cada hoja del Excel hay datos para las pruebas los cuales se pueden editar y cambiar por nuevos datos de prueba. Se podría cambiar la fuente de datos de Excel a cualquier otra fuente, como por ejemplo MySQL.
 
 Se han usado los frameworks de:
 
