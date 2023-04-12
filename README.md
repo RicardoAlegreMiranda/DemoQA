@@ -14,27 +14,27 @@ Se han usado los frameworks de:
 - PyCharm IDE
 
 
-                                    Enfoque de las pruebas:
+# Enfoque de las pruebas:
 En las pruebas se realiza una regresión completa por todas las principales funcionalidades de la Web, en apartados Elementos y Formulario, también se pueden utilizar algunas pruebas como un "Smoke Test" y validar que el entorno (en este caso la Web de DEMOQA) están funcionando correctamente
 
 
-                                    ¿Cómo usar?:
+# ¿Cómo usar?:
 Se puede ejecutar el archivo main.py el cual ejecuta todos los casos de prueba o  bien se pueden ejecutar los casos de prueba individualmente desde las Carpetas Elements/Test y Form/Test. Actualmente hay 15 casos de prueba, los cuales tardan unos 2 minutos aprox. en ser ejecutados.
 
- ![App Screenshot](https://ibb.co/gtMSKxH)
+ ![main](https://user-images.githubusercontent.com/40073353/231497110-75d74e74-dccd-4adf-9fa5-1dabbd4bf812.jpg)
 
-                                    Datos de prueba:
+# Datos de prueba:
 En la carpeta Test_Dates está el documento Excel. Cada Hoja contiene los datos para un caso de prueba, algunas pruebas se pueden añadir todos los datos de pruebas deseados y el caso de prueba se ejecutará una vez por cada conjunto de pruebas portado.
 
 Por ejemplo: En la TestBox hay 3 líneas de datos de prueba, si se añaden líneas adicionales las pruebas se ejecutarán una vez por cada línea, o si se borran líneas el caso se ejecutará menos veces.
 
-![App Screenshot](https://ibb.co/VqDxHGZ)
+![excel](https://user-images.githubusercontent.com/40073353/231498067-7c3ae46f-44ef-45aa-bf49-2b4fe42c4db4.jpg)
 
 
-                                     Reportes:
+# Reportes:
 Al terminar la ejecución (el archivo main.py) se devuelve en pantalla el total de pruebas ejecutas, el número pruebas pasadas y el número de pruebas falladas. 
  
- ![App Screenshot](https://ibb.co/3pnmNQ5)
+ ![PyTestReport](https://user-images.githubusercontent.com/40073353/231497407-1b937466-ee1a-4ba8-a47d-5e7d026ed563.jpg)
   
 También se genera automaticamente un reporte con el framework de allurereports, guarda datos sobre la ejecución de la prueba y toma capturas de pantalla a modo de evidencia de la ejecución. Para poder visualizar dicho informe es necesario abrir el servidor de allurserver(Es necesario tener instalado allurereports).
 
@@ -43,13 +43,13 @@ Para iniciar el servidor se puede hacer desde la terminal de PyCharm del proyect
  
  Los informes que presenta se ven asi: 
 
- ![App Screenshot](https://ibb.co/Dz39wp0)
+![allure1](https://user-images.githubusercontent.com/40073353/231497552-d0608e11-7c2e-428b-b1d0-0510690e5d05.jpg)
 
- ![App Screenshot](https://ibb.co/B69j5n4)
+![allure2](https://user-images.githubusercontent.com/40073353/231497626-313c9a4b-1a07-44e9-87de-2f7eaa4f1d5c.jpg)
 
-  ![App Screenshot](https://ibb.co/fQcz0Zw)
- 
-                                    Estructura:
+![allure3](https://user-images.githubusercontent.com/40073353/231497706-800cfd1f-80a1-4028-8762-144999a03474.jpg)
+  
+ # Estructura:
 En la carpeta Funcions se guardan los métodos más utilizados, dicha carpeta se importa en todos los casos de prueba.
 
 En las carpetas Paths están los archivos para las rutas (XPATH e ID) y algunos métodos que son únicos para la prueba en cuestión, por ejemplo en la ruta: Form/Paths está el archivo path_form.py el cual contiene todas las rutas necesarias paras las pruebas. Además contiene la ruta para acceder a los datos de pruebas del documento excel, y algunos métodos propios que son necesarios para ejecutar la prueba de dicho formulario. 
