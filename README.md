@@ -8,10 +8,11 @@ Para las pruebas se utiliza un archivo Excel del cual se importan los datos de p
 
 Se han usado los frameworks de:
 
-- Selenium
-- Pytest
-- Allure
-- PyCharm IDE
+- Selenium (Webdriver)
+- Pytest (Pruebas)
+- Allure (Reportes)
+- Openpyxl (Base datos - Excel)
+- PyCharm (IDE)
 
 
 # Enfoque de las pruebas:
