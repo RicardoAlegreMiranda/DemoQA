@@ -22,6 +22,8 @@ En las pruebas se realiza una regresión completa por todas las principales func
 # ¿Cómo usar?:
 Se puede ejecutar el archivo main.py el cual ejecuta todos los casos de prueba o  bien se pueden ejecutar los casos de prueba individualmente desde las Carpetas Elements/Test y Form/Test. Actualmente hay 15 casos de prueba, los cuales tardan unos 2 minutos aprox. en ser ejecutados.
 
+La carpeta raiz (DemoQA) debe estar descomprimida en la raiz C: del disco duro para que funcione y tener los frameworks instalados además de usar el interprete de Python 3.9 o superior.
+
  ![main](https://user-images.githubusercontent.com/40073353/231497110-75d74e74-dccd-4adf-9fa5-1dabbd4bf812.jpg)
 
 # Datos de prueba:
