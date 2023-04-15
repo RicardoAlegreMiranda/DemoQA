@@ -1,4 +1,4 @@
 import pytest
 
-pytest.main(['-v', '--html=reporte.html', '--self-contained-html'])
+pytest.main()
 print("Ejecutando todas las pruebas")
