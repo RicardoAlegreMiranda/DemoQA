@@ -12,7 +12,6 @@ ruta = paths_TextBox.TextBox  # Método para obtener los XPATH del formulario We
 driver = None
 funciones = None
 
-
 # Obtener los datos de prueba del documento Excel
 rutaExcel = paths_TextBox.Excel.DirExcel  # Obtener la ruta donde está el Excel
 hojaExcelOK = paths_TextBox.Excel.HojaTextBoxOK  # Obtener la hoja del Excel donde están los datos a utilizar
@@ -22,6 +21,7 @@ listaXpath = [ruta.Name, ruta.Email, ruta.CAddress, ruta.PAdress]  # Lista con l
 # Crear una lista vacía para almacenar los datos obtenidos
 datos_obtenidos = []
 
+
 # Esta es la configuración global para las pruebas (abre el driver y se lo envía mis funciones para iniciarlas)
 def setup_function():
     global driver
@@ -29,10 +29,12 @@ def setup_function():
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)  # Funciones
 
+
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
     print("Fin de la prueba")
     driver.close()
+
 
 #################################################################
 ##### <<AQUÍ EMPIEZAN LAS PRUEBAS PARA EL FORMULARIO WEB>> ######
@@ -45,7 +47,7 @@ def test_Datos_FormularioWeb():
     # Carga los métodos para acceder los datos de prueba alojados en el documento Excel
     funciones_excel = funcitions_excel.FuncionesExcel(rutaExcel, hojaExcelOK)
     filas = funciones_excel.obtener_num_filas()  # El número de filas que tiene el documento Excel
-    columnas = funciones_excel.obtener_num_columnas() # El número de columnas del documento
+    columnas = funciones_excel.obtener_num_columnas()  # El número de columnas del documento
 
     # Se abre el navegador con la URL indicada
     funciones.getURL(ruta.Url)
@@ -80,12 +82,13 @@ def test_Datos_FormularioWeb():
         for xpath in listaXpath:
             funciones.Limpiar(xpath)  # borra los datos de la lista
 
-    #Cierra el documento Excel con los datos
+    # Cierra el documento Excel con los datos
     funciones_excel.cerrar_excel()
+
+
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.description("""Esta prueba consiste en validar que NO permite introducir un correo con formato invalido""")
 def test_Correo_Invalido():
-
     # Carga los datos necesarios para la prueba
     funciones_excel = funcitions_excel.FuncionesExcel(rutaExcel, hojaExcelCorreo)
     filas = funciones_excel.obtener_num_filas()  # El número de filas que tiene el documento Excel
@@ -115,5 +118,3 @@ def test_Correo_Invalido():
         # Se borran los datos del formulario para repetir la prueba con otros datos
         for xpath in listaXpath:
             funciones.Limpiar(xpath)  # borra los datos de la lista
-
-

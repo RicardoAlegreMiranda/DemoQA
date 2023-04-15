@@ -1,3 +1,6 @@
+import os
+
+
 class form: #Aqui están las rutas de los XPATH
     URL = "https://demoqa.com/automation-practice-form"
     nombre = "//input[@id='firstName']"
@@ -12,9 +15,9 @@ class form: #Aqui están las rutas de los XPATH
     direccion = "//textarea[contains(@id,'currentAddress')]"
     estado = "//div[@class=' css-1hwfws3'][contains(.,'Select State')]"
     ciudad = "//div[@class='col-md-4 col-sm-12'][contains(.,'Select City')]"
-    submit = "//*[@id='submit']"
-    ruta_imagen = "C://DemoQA//Files//sampleFile.jpg"
-    btn_uplodad = "//*[@id='userForm']/div[8]/div[2]/div/label"
+    submit = "//button[contains(@id,'submit')]"
+    ruta_imagen = "..//..//Files//sampleFile.jpeg"
+    btn_uplodad = "//*[@id='uploadPicture']"
     tabla_modal = "/html/body/div[4]/div/div/div[2]/div/table"
     closed_modal = "//button[contains(@id,'closeLargeModal')]"
     deportes = "//label[contains(@for,'hobbies-checkbox-1')]"
@@ -23,7 +26,7 @@ class form: #Aqui están las rutas de los XPATH
     Lista_Elementos = [nombre, apellido, mail, movil, direccion]
 
 class Excel:
-    DirExcel = "C://DemoQA//Test_Dates//TestDates.xlsx"
+    DirExcel = "../../Test_Dates/TestDates.xlsx"
     HojaCorreo = "Form"
 
 def separar_palabras(texto):
@@ -94,3 +97,14 @@ def obtenerDía(día):
     return day
 
 
+# Este método sirve para modificar la ruta actual y convertirla en la ruta relativa necesaria para la subida
+# del archivo JPG
+def ruta_relativa():
+    # Obtén la ruta del directorio actual
+    ruta_actual = os.path.dirname(os.path.abspath(__file__))
+    # Modifica la ruta actual para que tenga el formato esperado
+    ruta_imagen_modificada = ruta_actual.replace("\\", "//")
+    partes = ruta_imagen_modificada.split("//")  # Dividir el texto en partes utilizando "//" como delimitador
+    nueva_cadena = "//".join(partes[:-1])  # Unir las partes excepto la última
+    nueva_cadena += "//"  # Agregar de nuevo el último "//" al final
+    return nueva_cadena + "Files//tester.jpg"  # Ahora tenemos la ruta actual del archivo JPG

@@ -1,3 +1,4 @@
+import os
 import time
 from datetime import datetime
 from selenium.webdriver import ActionChains, Keys
@@ -27,11 +28,7 @@ funciones_excel = funcitions_excel.FuncionesExcel(rutaExcel, hojaExcel)
 
 # Esta es la configuración global para las pruebas (abre el driver y se lo envía mis funciones para iniciarlas)
 def setup_function():
-    global driver
-    global funciones
-    global lista_datos
-    global lista_elementos
-    global actions
+    global driver, funciones, lista_datos, lista_elementos, actions
 
     lista_datos = []
     lista_elementos = []
@@ -93,10 +90,9 @@ def test_Formulario():
     for hobbie in obtenerHobbies(lista_datos[10]):
         funciones.Click(hobbie)
 
-
     # Sube la imagen JPG
-    funciones.writeXP(ruta.form.btn_uplodad, ruta.form.ruta_imagen)
 
+    funciones.writeXP(ruta.form.btn_uplodad, ruta.ruta_relativa())
     # Escribe el estado
     funciones.Click(ruta.form.estado)
     actions.send_keys(lista_datos[5] + Keys.ENTER)
@@ -107,9 +103,15 @@ def test_Formulario():
     actions.send_keys(lista_datos[6] + Keys.ENTER)
     actions.perform()
 
-    # Click en Submit para enviar todos los datos
-    funciones.Click(ruta.form.submit)
-
+    # Ejecuta una función JavaScript para cambiar el nivel de zoom de la página
+    driver.execute_script("document.body.style.zoom = '{}';".format(0.7))
+    time.sleep(1)
+    # Click en Submit para enviar todos los datos si el submit está tapado, hace tab+enter
+    #try:
+        #funciones.Click(ruta.form.submit)
+    #except:
+    actions.send_keys(Keys.TAB + Keys.ENTER)
+    actions.perform()
 
     # Esperar a que el modal esté presente
     time.sleep(1)
@@ -122,8 +124,12 @@ def test_Formulario():
     # Hace una captura de pantalla
     funciones.capturar(dateTime.obtener_fecha_hora_actual())
 
-    # Cierra el modal
-    funciones.Click(ruta.form.closed_modal)
+    # Cierra el modal, si no se puede hacer click, hace tab + enter
+    try:
+        funciones.Click(ruta.form.closed_modal)
+    except:
+        actions.send_keys(Keys.TAB + Keys.ENTER)
+        actions.perform()
 
 
 #################################################################
@@ -132,7 +138,8 @@ def test_Formulario():
 
 
 # Este método sirve para obtener la fecha del Excel, modificarla a un formato compatible con el datepicker de la Web y
-# después pulsar sobre la fecha correcta, llamado a esta función se ahorran todos estos pasos y se marca la fecha correcta
+# después pulsar sobre la fecha correcta, llamado a esta función se ahorran todos estos pasos y se marca
+# la fecha correcta
 def selecionarFechaCalendario():
     # Almaceno la fecha en una variable Strint
     fecha_str = str(lista_datos[8])
@@ -153,7 +160,6 @@ def selecionarFechaCalendario():
     # Cambio el formato de la fecha en el listado, para que tenga el mismo formato que en la web, para que después
     # se puedan comparar
     lista_datos[8] = str(fecha_objeto.day) + " " + ruta.obtenerMes(fecha_objeto.month) + "," + str(fecha_objeto.year)
-
 
     # hace Click en el día y Cierra el datePicker
     funciones.Click(ruta.obtenerDía(fecha_objeto.day))

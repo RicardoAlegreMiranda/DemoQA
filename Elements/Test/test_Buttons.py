@@ -8,10 +8,11 @@ from selenium.webdriver.common.action_chains import ActionChains
 ############### <<Carga la configuración previa>> ###############
 #################################################################
 
-ruta = buttons   # Rutas de los Xpath
-driver = None # Inicio la variable global
-funciones = None # Inicio la variable global
-acciones = None # Acciones
+ruta = buttons  # Rutas de los Xpath
+driver = None  # Inicio la variable global
+funciones = None  # Inicio la variable global
+acciones = None  # Acciones
+
 
 #################################################################
 ################# <<AQUÍ EMPIEZAN LAS PRUEBAS > #################
@@ -22,12 +23,11 @@ acciones = None # Acciones
 
 # Esta es la configuración global para las pruebas (abre el driver y se lo envía mis funciones para iniciarlas)
 def setup_function():
-    global driver
-    global funciones
-    global acciones
+    global driver, funciones, acciones
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = Global_Funcions(driver)  # Funciones
     acciones = ActionChains(driver)
+
 
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
@@ -36,7 +36,6 @@ def teardown_function():
 
 
 def test_clickBotones():
-
     # Abre el navegador
     funciones.getURL(ruta.URL)
 

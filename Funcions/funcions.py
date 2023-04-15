@@ -68,11 +68,16 @@ class Global_Funcions():
     # Hace click en un elemento
     def Click(self, XPATH):
         try:
+
             # Espera a cargar elemento
             wait = WebDriverWait(self.driver, 5)
             wait.until(EC.presence_of_element_located((By.XPATH, XPATH)))
-            # Busca Elemento y hace click
+            # Busca Elemento, hace Scroll por último hace click
             elemento = self.driver.find_element(by=By.XPATH, value=XPATH)
+            self.driver.execute_script("arguments[0].scrollIntoView(true);", elemento)
+            # Espera hasta que el elemento sea visible
+            wait = WebDriverWait(self.driver, 3)
+            wait.until(EC.visibility_of(elemento))
             elemento.click()
 
             # Aviso de que se hace click

@@ -1,7 +1,0 @@
-
-Página abierta :https://demoqa.com/dynamic-properties
-Encontrado XPATH //button[contains(@id,'enableAfter')]
-
-Encontrado XPATH //button[contains(@id,'enableAfter')]
-
-Fin de la prueba

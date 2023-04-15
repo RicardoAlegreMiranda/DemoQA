@@ -1,5 +1,0 @@
-
-Página abierta :https://demoqa.com/upload-download
-Escrito: C://DemoQA//Elements//Files//tester.jpg En XPATH //input[contains(@id,'uploadFile')]
-
-Fin de la prueba

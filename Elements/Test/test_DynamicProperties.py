@@ -16,8 +16,7 @@ funciones = None
 
 # Esta es la configuración global para las pruebas (abre el driver y se lo envía mis funciones para iniciarlas)
 def setup_function():
-    global driver
-    global funciones
+    global driver, funciones
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)  # Funciones
 

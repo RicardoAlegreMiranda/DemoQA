@@ -3,8 +3,6 @@ from Funcions import funcions, dateTime
 from Elements.Paths import paths_RadioButton
 from selenium import webdriver
 
-
-
 #################################################################
 ############### <<Carga la configuración previa>> ###############
 #################################################################
@@ -14,11 +12,9 @@ ruta = paths_RadioButton.radio  # Método para obtener los XPATH del formulario 
 driver = None
 funciones = None
 
-
 # Esta es la configuración global para las pruebas (abre el driver y se lo envía mis funciones para iniciarlas)
 def setup_function():
-    global driver
-    global funciones
+    global driver, funciones
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)  # Funciones
 
@@ -31,8 +27,6 @@ def teardown_function():
 #################################################################
 ##### <<AQUÍ EMPIEZAN LAS PRUEBAS PARA EL RADIO BUTTON>> ########
 #################################################################
-
-
 
 # Esta prueba consiste en validar los 3 radio-button (incluido el deshabilitado)
 def test_RadioButton():

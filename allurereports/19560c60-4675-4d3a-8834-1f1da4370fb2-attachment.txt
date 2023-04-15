@@ -1,9 +1,0 @@
-
-Página abierta :https://demoqa.com/webtables
-Encontrado XPATH //*[@id='app']/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]
-
-Click: //*[@id='delete-record-2']
-
-Encontrado XPATH //*[@id='app']/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]
-
-Fin de la prueba

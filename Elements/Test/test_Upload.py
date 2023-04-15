@@ -9,16 +9,24 @@ from selenium import webdriver
 #################################################################
 
 # Instancia los objetos necesarios
-ruta = pach_Upload.upload # Método para obtener los XPATH del formulario Web (llamado TextBox)
+ruta = pach_Upload.upload
 driver = None
 funciones = None
 
+# Obtener la ruta de la carpeta actual
+ruta_carpeta_descarga = os.getcwd()
+
+# Configurar las opciones de Chrome
+options = webdriver.ChromeOptions()
+
+# Establecer la carpeta de descarga (para la prueba de descargar el archivo)
+prefs = {'download.default_directory': ruta_carpeta_descarga}
+options.add_experimental_option('prefs', prefs)
 
 # Esta es la configuración global para las pruebas (abre el driver y se lo envía mis funciones para iniciarlas)
 def setup_function():
-    global driver
-    global funciones
-    driver = webdriver.Chrome()  # Driver Chrome
+    global driver, funciones
+    driver = webdriver.Chrome(chrome_options=options)  # Driver Modificado con carpeta de descarga diferente
     funciones = funcions.Global_Funcions(driver)  # Funciones
 
 
@@ -38,9 +46,15 @@ def test_carga_imagen():
     # Abre el navegador
     funciones.getURL(ruta.URL)
 
-    # Sube la imagen (Uso la función de escritura por qué es la misma) en lugar de un texto por parámetro le envío
-    # la dirección del archivo JPG
-    funciones.writeXP(ruta.Upload, ruta.ruta_archivo)
+    # Obtén la ruta del directorio actual
+    ruta_actual = os.path.dirname(os.path.abspath(__file__))
+    # Modifica la ruta actual para que tenga el formato esperado
+    ruta_imagen_modificada = ruta_actual.replace("\\", "//")
+    # Convierte la ruta actual modifica a la ruta del archivo JPG
+    archivoJPG = ruta.ruta_relativa(ruta_imagen_modificada)
+
+    # Sube la imagen JPG a la Web
+    funciones.writeXP(ruta.Upload,  archivoJPG)
 
     # Lee el mensaje de subida
     Texto_Subida = funciones.getText(ruta.Confirma_Subida)
@@ -53,6 +67,7 @@ def test_carga_imagen():
 
 # Esta prueba válida que se descarga la imagen de manera correcta
 def test_Descarga():
+
     # Abre el navegador
     funciones.getURL(ruta.URL)
 
@@ -63,4 +78,5 @@ def test_Descarga():
     time.sleep(3)
 
     # Comprueba si la imagen está en a ruta de descarga
-    assert os.path.exists(ruta.ruta_descarga_PC)
+    assert os.path.exists(ruta_carpeta_descarga)
+

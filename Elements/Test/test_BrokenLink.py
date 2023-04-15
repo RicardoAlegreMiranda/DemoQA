@@ -14,12 +14,9 @@ funciones = None
 
 # Esta es la configuración global para las pruebas (abre el driver y se lo envía mis funciones para iniciarlas)
 def setup_function():
-    global driver
-    global funciones
+    global driver, funciones
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)  # Funciones
-
-
 
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
@@ -50,7 +47,6 @@ def test_imágenes():
     ancho_imagen2 = imagen2.size['width']
     alto_imagen2 = imagen2.size['height']
     print("ancho " + str(ancho_imagen2) + " Alto " + str(alto_imagen2))
-
 
     # Válida que la imagen2 tenga el tamaño esperado (ni muy grande ni muy pequeña)
     assert (100 < ancho_imagen2 < 500) and (50 < alto_imagen2 < 250)

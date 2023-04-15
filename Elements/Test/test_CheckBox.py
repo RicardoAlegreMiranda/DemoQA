@@ -8,10 +8,9 @@ from selenium import webdriver
 #################################################################
 
 ruta = CheckBox  # Rutas de los Xpath
-driver = None # Inicio la variable global
-funciones = None # Inicio la variable global
+driver = None
+funciones = None
 datos_obtenidos = []
-
 
 #################################################################
 ################# <<AQUÍ EMPIEZAN LAS PRUEBAS > #################
@@ -19,8 +18,7 @@ datos_obtenidos = []
 
 # Esta es la configuración global para las pruebas (abre el driver y se lo envía mis funciones para iniciarlas)
 def setup_function():
-    global driver # Inicio la variable global
-    global funciones # Inicio la variable global
+    global driver, funciones
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)  # Funciones
 
@@ -57,4 +55,3 @@ def test_CheckBox1():
     for obtenido in datos_obtenidos:
         assert obtenido == ruta.text_expected[n]
         n += 1
-
