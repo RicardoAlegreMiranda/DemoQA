@@ -1,15 +1,17 @@
 pipeline {
-  agent any
-  stages {
-    stage('version') {
-      steps {
-        sh 'python3 --version'
-      }
+    agent any
+
+    stages {
+        stage('Checkout SCM') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build and Run') {
+            steps {
+                sh 'python Main.py'
+            }
+        }
     }
-    stage('hello') {
-      steps {
-        sh 'python3 Main.py'
-      }
-    }
-  }
 }
