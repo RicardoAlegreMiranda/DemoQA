@@ -1,5 +1,5 @@
 // Este es el Script para ejecutar las pruebas en Jenkins W10 en máquina local
-pipeline { 
+pipeline {
     agent any
 
     stages {
@@ -15,18 +15,23 @@ pipeline {
         }
         stage('Test') {
             steps {
-            // Para evitar errores debe instalar los modulos necesarios antes de ejecutar las pruebas
+                // Instala todas los modulos necesarios
                 bat '''
-                    set PIP=C:\\Users\\alegr\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\pip.exe
-                    set PYTHON=C:\\Users\\alegr\\AppData\\Local\\Programs\\Python\\Python311\\python.exe
+                    // Es necesario indicar la ruta exacta de Python, PIP y Allure, EDITAR estas rutas para que coincidan en su máquina    
+                    set PIP=C:\\Users\\Usuario\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\pip.exe //
+                    set PYTHON=C:\\Users\\Usuario\\AppData\\Local\\Programs\\Python\\Python311\\python.exe
+                    set ALLURE=C:\\allure\\bin\\allure.bat
                     %PIP% install selenium 
                     %PIP% install allure-behave
                     %PIP% install allure-pytest
                     %PIP% install allure-python-commons
                     %PIP% install openpyxl
                     %PIP% install urllib3
-                    %PYTHON% Main.py
+                    %PIP% install pytest
                 '''
+                
+                // Ejecuta las pruebas y genera un reporte
+                 bat '%PYTHON% Main.py'
             }
         }
     }
