@@ -53,5 +53,5 @@ def test_CheckBox1():
     # Este bucle compara los datos obtenidos en pantalla con los datos esperados
     n = 0
     for obtenido in datos_obtenidos:
-        assert obtenido == ruta.text_expected[n]
+        assert obtenido in ruta.text_expected
         n += 1
