@@ -1,4 +1,4 @@
 import pytest
 
-pytest.main(['Elements/Test/test_WebTables.py'])
+pytest.main()
 print("Ejecutando todas las pruebas")
