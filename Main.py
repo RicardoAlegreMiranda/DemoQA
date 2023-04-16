@@ -1,4 +1,4 @@
 import pytest
 
-pytest.main()
-print("Ejecutando todas las pruebas")
+# Ejecuta pruebas con pytest y generar reportes en el directorio "reports"
+pytest.main(['--alluredir=reports'])
