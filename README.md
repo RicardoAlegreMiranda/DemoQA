@@ -25,6 +25,8 @@ Se puede ejecutar el archivo main.py el cual ejecuta todos los casos de prueba, 
 La carpeta raiz (DemoQA) debe estar descomprimida en la raiz C: del disco duro para que funcione y tener los frameworks instalados además de usar el interprete de Python 3.9 o superior.
 
  ![main](https://user-images.githubusercontent.com/40073353/231497110-75d74e74-dccd-4adf-9fa5-1dabbd4bf812.jpg)
+ 
+ También se puede ejecutar desde Jenkins usando el Script del documento pipeline_jenkins
 
 # Datos de prueba:
 En la carpeta Test_Dates está el documento Excel. Cada Hoja contiene los datos para un caso de prueba, algunas pruebas se pueden añadir todos los datos de pruebas deseados y el caso de prueba se ejecutará una vez por cada conjunto de pruebas portado.
