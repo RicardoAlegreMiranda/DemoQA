@@ -1,4 +1,5 @@
 selenium
 openpyxl
 allure-behave
+allure-pytest
 pytest
