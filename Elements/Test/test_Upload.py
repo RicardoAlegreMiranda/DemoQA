@@ -9,7 +9,7 @@ from selenium import webdriver
 #################################################################
 
 # Instancia los objetos necesarios
-ruta = pach_Upload.upload
+ruta = pach_Upload.Upload
 driver = None
 funciones = None
 
@@ -22,6 +22,7 @@ options = webdriver.ChromeOptions()
 # Establecer la carpeta de descarga (para la prueba de descargar el archivo)
 prefs = {'download.default_directory': ruta_carpeta_descarga}
 options.add_experimental_option('prefs', prefs)
+
 
 # Esta es la configuración global para las pruebas (abre el driver y se lo envía mis funciones para iniciarlas)
 def setup_function():
@@ -42,7 +43,6 @@ def teardown_function():
 
 # Esta prueba válida que la imagen se sube de manera correcta
 def test_carga_imagen():
-
     # Abre el navegador
     funciones.getURL(ruta.URL)
 
@@ -54,7 +54,7 @@ def test_carga_imagen():
     archivoJPG = ruta.ruta_relativa(ruta_imagen_modificada)
 
     # Sube la imagen JPG a la Web
-    funciones.writeXP(ruta.Upload,  archivoJPG)
+    funciones.writeXP(ruta.Upload, archivoJPG)
 
     # Lee el mensaje de subida
     Texto_Subida = funciones.getText(ruta.Confirma_Subida)
@@ -65,9 +65,9 @@ def test_carga_imagen():
     # Hace una captura de pantalla
     funciones.capturar(dateTime.obtener_fecha_hora_actual())
 
+
 # Esta prueba válida que se descarga la imagen de manera correcta
 def test_Descarga():
-
     # Abre el navegador
     funciones.getURL(ruta.URL)
 
@@ -79,4 +79,3 @@ def test_Descarga():
 
     # Comprueba si la imagen está en a ruta de descarga
     assert os.path.exists(ruta_carpeta_descarga)
-
