@@ -29,7 +29,6 @@ class WebTables:
         return modificar
 
 class Excel:
-    DirExcel = "../../Test_Dates/TestDates.xlsx"
     HojaCorreo = "WebTables"
 
 

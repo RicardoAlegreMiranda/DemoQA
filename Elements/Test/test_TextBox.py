@@ -13,7 +13,6 @@ driver = None
 funciones = None
 
 # Obtener los datos de prueba del documento Excel
-rutaExcel = paths_TextBox.Excel.DirExcel  # Obtener la ruta donde está el Excel
 hojaExcelOK = paths_TextBox.Excel.HojaTextBoxOK  # Obtener la hoja del Excel donde están los datos a utilizar
 hojaExcelCorreo = paths_TextBox.Excel.HojaCorreo  # Obtener la hoja del Excel donde están los datos a utilizar
 listaXpath = [ruta.Name, ruta.Email, ruta.CAddress, ruta.PAdress]  # Lista con los Xpath a probar
@@ -21,20 +20,16 @@ listaXpath = [ruta.Name, ruta.Email, ruta.CAddress, ruta.PAdress]  # Lista con l
 # Crear una lista vacía para almacenar los datos obtenidos
 datos_obtenidos = []
 
-
 # Esta es la configuración global para las pruebas (abre el driver y se lo envía mis funciones para iniciarlas)
 def setup_function():
-    global driver
-    global funciones
+    global driver, funciones
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)  # Funciones
-
 
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
     print("Fin de la prueba")
     driver.close()
-
 
 #################################################################
 ##### <<AQUÍ EMPIEZAN LAS PRUEBAS PARA EL FORMULARIO WEB>> ######
@@ -45,7 +40,7 @@ def teardown_function():
 pulsar el submit, deben aparecer escritos los datos abajo""")
 def test_Datos_FormularioWeb():
     # Carga los métodos para acceder los datos de prueba alojados en el documento Excel
-    funciones_excel = funcitions_excel.FuncionesExcel(rutaExcel, hojaExcelOK)
+    funciones_excel = funcitions_excel.FuncionesExcel(hojaExcelOK)
     filas = funciones_excel.obtener_num_filas()  # El número de filas que tiene el documento Excel
     columnas = funciones_excel.obtener_num_columnas()  # El número de columnas del documento
 
@@ -90,7 +85,7 @@ def test_Datos_FormularioWeb():
 @allure.description("""Esta prueba consiste en validar que NO permite introducir un correo con formato invalido""")
 def test_Correo_Invalido():
     # Carga los datos necesarios para la prueba
-    funciones_excel = funcitions_excel.FuncionesExcel(rutaExcel, hojaExcelCorreo)
+    funciones_excel = funcitions_excel.FuncionesExcel(hojaExcelCorreo)
     filas = funciones_excel.obtener_num_filas()  # El número de filas que tiene el documento Excel
     columnas = funciones_excel.obtener_num_columnas()  # El número de columnas del documento
 

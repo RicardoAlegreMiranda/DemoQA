@@ -23,10 +23,10 @@ class form: #Aqui están las rutas de los XPATH
     deportes = "//label[contains(@for,'hobbies-checkbox-1')]"
     musica = "//label[contains(@for,'hobbies-checkbox-3')]"
     lectura = "//label[@for='hobbies-checkbox-2'][contains(.,'Reading')]"
+    zoom = "//*[contains(@style, 'zoom: 0.7')]"
     Lista_Elementos = [nombre, apellido, mail, movil, direccion]
 
 class Excel:
-    DirExcel = "../../Test_Dates/TestDates.xlsx"
     HojaCorreo = "Form"
 
 def separar_palabras(texto):

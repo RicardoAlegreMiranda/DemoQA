@@ -12,7 +12,7 @@ ruta_modificada = os.path.join(ruta_modificada, "Test_Dates", "TestDates.xlsx")
 
 class FuncionesExcel:
 
-    def __init__(self, ruta_excel, hoja_nombre):
+    def __init__(self, hoja_nombre):
         self.ruta_excel = ruta_modificada
         self.libro_excel = openpyxl.load_workbook(self.ruta_excel)
         self.hoja_excel = self.libro_excel[hoja_nombre]

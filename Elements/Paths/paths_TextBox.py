@@ -14,6 +14,5 @@ class TextBox:
     EmailClassError = "mr-sm-2 field-error form-control"
 
 class Excel:
-    DirExcel = "../../Test_Dates/TestDates.xlsx"  # Búsqueda relativa (sube 2 carpetas arriba de mi posición actual)
     HojaTextBoxOK = "TextBox"
     HojaCorreo = "Correo"

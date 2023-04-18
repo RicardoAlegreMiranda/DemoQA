@@ -8,7 +8,7 @@ from allure_commons.types import AttachmentType
 t = 0.3
 
 
-class Global_Funcions():
+class Global_Funcions:
 
     def __init__(self, driver):
         self.driver = driver
@@ -72,12 +72,15 @@ class Global_Funcions():
             # Espera a cargar elemento
             wait = WebDriverWait(self.driver, 5)
             wait.until(EC.presence_of_element_located((By.XPATH, XPATH)))
-            # Busca Elemento, hace Scroll por último hace click
+
+            # Busca Elemento
             elemento = self.driver.find_element(by=By.XPATH, value=XPATH)
-            self.driver.execute_script("arguments[0].scrollIntoView(true);", elemento)
+
+            # Hace scroll hasta el element
+            #self.driver.execute_script("arguments[0].scrollIntoView(true);", elemento)
             # Espera hasta que el elemento sea visible
-            wait = WebDriverWait(self.driver, 3)
-            wait.until(EC.visibility_of(elemento))
+            #wait = WebDriverWait(self.driver, 3)
+            #wait.until(EC.visibility_of(elemento))
             elemento.click()
 
             # Aviso de que se hace click
@@ -97,7 +100,7 @@ class Global_Funcions():
     def capturar(self, Nombre):
         try:
             allure.attach(self.driver.get_screenshot_as_png(), name=Nombre, attachment_type=AttachmentType.PNG)
-            print ("Realizada captura de pantalla " + Nombre)
+            print("Realizada captura de pantalla " + Nombre)
         except:
             print("No se pudo realizar la captura de pantalla")
 
@@ -114,10 +117,10 @@ class Global_Funcions():
     # Este método busca los elementos de una clase por su nombre
     def buscarElementosNombreClase(self, XPATH, VALUE):
         valor = self.searchXP(XPATH)
-        datosTabla = valor.find_elements(by=By.CLASS_NAME, value=VALUE)
-        return datosTabla
+        datos_tabla = valor.find_elements(by=By.CLASS_NAME, value=VALUE)
+        return datos_tabla
 
-    # Este método sirve para locazalir los links de una Web
+    # Este método sirve para localizar los links de una Web
     def enlaces(self):
         try:
             enlaces = self.driver.find_elements(by=By.TAG_NAME, value="a")
@@ -125,7 +128,6 @@ class Global_Funcions():
         except:
             print("No se encuentran enlaces")
 
-    """# Este método sirve para localizar un elemento por el nombre de su clase        
-    def searchClassName(self,ClassName):
-        elemento = self.driver.find_element(by=By.CLASS_NAME, value=ClassName)
-        return elemento"""
+    def wait_zoom(self, xpath):
+        wait = WebDriverWait(self.driver, 5)  # Configura un WebDriverWait con un tiempo de espera máximo de 10 segundos
+        wait.until(EC.presence_of_element_located((By.XPATH, xpath)))

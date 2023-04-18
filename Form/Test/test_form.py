@@ -21,9 +21,8 @@ actions = None
 lista_devuelta = []
 
 # Obtener los datos de prueba del documento Excel
-rutaExcel = ruta.Excel.DirExcel  # Obtener la ruta donde está el Excel
 hojaExcel = ruta.Excel.HojaCorreo  # Obtener la hoja del Excel donde están los datos a utilizar
-funciones_excel = funcitions_excel.FuncionesExcel(rutaExcel, hojaExcel)
+funciones_excel = funcitions_excel.FuncionesExcel(hojaExcel)
 
 
 # Esta es la configuración global para las pruebas (abre el driver y se lo envía mis funciones para iniciarlas)
@@ -79,8 +78,8 @@ def test_Formulario():
 
     # Escribe las asignaturas en el autocompletar y pulsar ENTER
     funciones.Click(ruta.form.asignaturas)
-    for asginatura in asignaturas:
-        actions.send_keys(asginatura)
+    for asignatura in asignaturas:
+        actions.send_keys(asignatura)
         actions.perform()
         time.sleep(0.1)
         actions.send_keys(Keys.ENTER)
@@ -103,18 +102,16 @@ def test_Formulario():
     actions.send_keys(lista_datos[6] + Keys.ENTER)
     actions.perform()
 
-    # Ejecuta una función JavaScript para cambiar el nivel de zoom de la página
+    # Ejecuta una función JavaScript para cambiar el nivel de zoom de la página y espera
     driver.execute_script("document.body.style.zoom = '{}';".format(0.7))
-    time.sleep(1)
-    # Click en Submit para enviar todos los datos si el submit está tapado, hace tab+enter
-    #try:
-        #funciones.Click(ruta.form.submit)
-    #except:
+    funciones.wait_zoom(ruta.form.zoom)
+
+    # Pulsa tab + Enter (si intentamos pulsar en Submit directamente da error)
     actions.send_keys(Keys.TAB + Keys.ENTER)
     actions.perform()
 
     # Esperar a que el modal esté presente
-    time.sleep(1)
+    funciones.wait_zoom(ruta.form.tabla_modal)
 
     # Compara los datos encontrados dentro del Modal con los datos Esperados
     datos_modal = funciones.getText(ruta.form.tabla_modal)
@@ -141,7 +138,7 @@ def test_Formulario():
 # después pulsar sobre la fecha correcta, llamado a esta función se ahorran todos estos pasos y se marca
 # la fecha correcta
 def selecionarFechaCalendario():
-    # Almaceno la fecha en una variable Strint
+    # Almaceno la fecha en una variable String
     fecha_str = str(lista_datos[8])
 
     # Convertir la cadena de texto String de fecha en objeto datetime

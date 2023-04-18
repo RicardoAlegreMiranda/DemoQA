@@ -12,14 +12,13 @@ driver = None
 funciones = None
 
 # Obtener los datos de prueba del documento Excel
-rutaExcel = paths_WebTables.Excel.DirExcel  # Obtener la ruta donde está el Excel
 hojaExcelCorreo = paths_WebTables.Excel.HojaCorreo  # Obtener la hoja del Excel donde están los datos a utilizar
 
 # Crear una lista vacía para almacenar los datos obtenidos
 datos_obtenidos = []
 
 # Carga los métodos para acceder los datos de prueba alojados en el documento Excel
-funciones_excel = funcitions_excel.FuncionesExcel(rutaExcel, hojaExcelCorreo)
+funciones_excel = funcitions_excel.FuncionesExcel(hojaExcelCorreo)
 filas = funciones_excel.obtener_num_filas()  # El número de filas que tiene el documento Excel
 columnas = funciones_excel.obtener_num_columnas()  # El número de columnas del documento
 

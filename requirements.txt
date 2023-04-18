@@ -1,3 +1,4 @@
+# Requiere python==3.11.*
 selenium
 openpyxl
 allure-behave
