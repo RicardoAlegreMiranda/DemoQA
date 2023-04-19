@@ -8,6 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 t = 0.3
 
+
 class Global_Funcions:
 
     def __init__(self, driver):
@@ -83,7 +84,29 @@ class Global_Funcions:
             print("Clic: " + XPATH + "\n")
             time.sleep(t)
         except:
-            print("No se pudo hacer Clic en: " + XPATH + "\n")
+            # Intenta hacer clic por ID en lugar de XPATH
+            click_by_id(self.driver, XPATH)
+            print("No se pudo hacer Clic_by_xpath: " + XPATH + "\n")
+
+    # Hace click en un elemento por ID
+    def click_by_id(self, ID):
+        try:
+
+            # Espera a cargar elemento
+            wait = WebDriverWait(self.driver, 5)
+            wait.until(EC.presence_of_element_located((By.ID, ID)))
+
+            # Busca Elemento
+            elemento = self.driver.find_element(by=By.ID, value=ID)
+
+            # Clic en el Elemento
+            elemento.click()
+
+            # Aviso de que se hace clic
+            print("Clic_by_id: " + ID + "\n")
+            time.sleep(t)
+        except:
+            print("No se pudo hacer Clic_by_id: " + XPATH + "\n")
 
     # Este método permite borrar los datos de un campo
     def Limpiar(self, XPATH):
