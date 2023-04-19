@@ -18,8 +18,8 @@ class CheckBox:
     Seleccionar = [word, desktop, angular, general]
 
     # Este método sirve para ver los datos que se muestran en pantalla
-    def dato_obtenido(self, driver):
-        funciones = funcions.Global_Funcions(driver)
-        dato = funciones.searchXP("//*[@id='result']/span[" + str(self) + "]").text
-        return dato
+def dato_obtenido(numero, driver):
+    funciones = funcions.Global_Funcions(driver)
+    dato = funciones.searchXP("//*[@id='result']/span[" + str(numero) + "]").text
+    return dato
 

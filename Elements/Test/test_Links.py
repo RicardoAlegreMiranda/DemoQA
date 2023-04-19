@@ -35,7 +35,7 @@ def test_Links():
     enlaces = funciones.enlaces()
 
     # Iterar a través de los elementos de enlace y guarda los links en una lista
-    ListaLinks =  []
+    ListaLinks = []
     for enlace in enlaces:
         url = enlace.get_attribute("href")
         ListaLinks.append(url)

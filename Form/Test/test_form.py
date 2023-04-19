@@ -1,17 +1,20 @@
+from datetime import datetime
 import os
 import time
-from datetime import datetime
+
 from selenium.webdriver import ActionChains, Keys
-from Funcions import funcions, funcitions_excel, dateTime
-from Form.Paths import path_form
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
+
+from Form.Paths import path_form
+from Funcions import funcions, funcitions_excel, dateTime
+
 
 #################################################################
 ############### <<Carga la configuración previa>> ###############
 #################################################################
 
-# Inicia las variables Gloles necesarias para que sean accesibles
+# Inicia las variables Globales necesarias para que sean accesibles
 ruta = path_form  # Método para obtener los XPATH del formulario Web (llamado TextBox)
 driver = None
 funciones = None

@@ -29,7 +29,7 @@ def teardown_function():
 #################################################################
 
 # Esta prueba consiste en validar que se cargan las imágenes de la web con el tamaño esperado
-def test_imágenes():
+def test_images():
     # Abre el navegador
     funciones.getURL(ruta.URL)
 

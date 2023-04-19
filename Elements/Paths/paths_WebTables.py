@@ -1,5 +1,14 @@
 from selenium.webdriver.common.by import By
 
+# Este método sirve para obtener el Xpath correcto para borrar una fila
+def borrar_tabla(NumeroFila):
+    borrar = "//*[@id='delete-record-" + str(NumeroFila) + "']"
+    return borrar
+
+# Este método sirve para obtener el Xpath correcto para modificar una fila
+def modificar_tabla(NumeroFila):
+    modificar = "// *[ @ id = 'edit-record-" + str(NumeroFila) + "']"
+    return modificar
 
 class WebTables:
     URL = "https://demoqa.com/webtables"
@@ -18,20 +27,5 @@ class WebTables:
     ListaXPATH = [FirstName, LastName, Email, Age, Salary, Department]
     ListaDatosModifica = ["Roberto", "Gonzalez", "roberto@gmail.com", "52", "22000", "RR.HH"]
 
-    # Este método sirve para obtener el Xpath correcto para borrar una fila
-    def borrarTabla(NumeroFila):
-        borrar = "//*[@id='delete-record-" + str(NumeroFila) + "']"
-        return borrar
-
-    # Este método sirve para obtener el Xpath correcto para modificar una fila
-    def modificarTabla(NumeroFila):
-        modificar = "// *[ @ id = 'edit-record-" + str(NumeroFila) + "']"
-        return modificar
-
 class Excel:
     HojaCorreo = "WebTables"
-
-
-
-
-

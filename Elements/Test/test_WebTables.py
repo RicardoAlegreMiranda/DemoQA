@@ -1,18 +1,21 @@
-from Funcions import funcions, funcitions_excel, dateTime
-from Elements.Paths import paths_WebTables
 from selenium import webdriver
+
+import Elements.Paths.paths_WebTables
+from Elements.Paths.paths_WebTables import borrar_tabla, modificar_tabla, Excel
+from Funcions import funcions, funcitions_excel, dateTime
 
 #################################################################
 ############### <<Carga la configuración previa>> ###############
 #################################################################
 
 # Instancia los objetos necesarios
-ruta = paths_WebTables.WebTables  # Método para obtener los XPATH del formulario Web (llamado TextBox)
+ruta = Elements.Paths.paths_WebTables.WebTables
 driver = None
 funciones = None
 
+
 # Obtener los datos de prueba del documento Excel
-hojaExcelCorreo = paths_WebTables.Excel.HojaCorreo  # Obtener la hoja del Excel donde están los datos a utilizar
+hojaExcelCorreo = Excel.HojaCorreo  # Obtener la hoja del Excel donde están los datos a utilizar
 
 # Crear una lista vacía para almacenar los datos obtenidos
 datos_obtenidos = []
@@ -39,7 +42,7 @@ def teardown_function():
 ######## <<AQUÍ EMPIEZAN LAS PRUEBAS PARA LA TABLA WEB>> ########
 #################################################################
 
-# Esta prueba consiste en añadir nuevas columnas de datos en la Web Table, los datos serán precargados desde una hoja
+# Esta prueba consiste en añadir nuevas columnas de datos en la Web Table, los datos serán pre-cargados desde una hoja
 # de Excel, y después de escribir todos los datos, válida que los datos de pruebas están presentes en la Web
 def test_nuevaFila():
 
@@ -66,18 +69,19 @@ def test_nuevaFila():
     # Este método obtiene todos los elementos de la tabla de datos Web
     datosTabla = funciones.buscarElementosNombreClase(ruta.tabla, 'rt-td')
 
-    # Añade todos los datos que no estén vacío a la lista "realdato"
-    realdato = []
+    # Añade todos los datos que no estén vacío a la lista "real_dato"
+    real_dato = []
     for dato in datosTabla:
         if len(dato.text) > 1:
-            realdato.append(dato.text)
+            real_dato.append(dato.text)
+            real_dato.append(dato.text)
 
     # Pasa todos los datos obtenidos a tipo String (para evitar errores en la validación)
     datos_obtenidos_sin_integer = [str(item) for item in datos_obtenidos]
 
     # Válida que los todos datos obtenidos en el Excel están presenten en los datos obtenidos de la Web
     for dat in datos_obtenidos_sin_integer:
-        assert dat in realdato
+        assert dat in real_dato
 
     # Hace una captura de pantalla
     funciones.capturar(dateTime.obtener_fecha_hora_actual())
@@ -98,7 +102,7 @@ def test_borrarDatos():
             AntesDeBorrar.append(dato.text)
 
     # Pulsa la tecla borrar en el primer puesto (Se puede modificar el número por cualquier número de fila)
-    funciones.Click(ruta.borrarTabla(2))
+    funciones.Click(borrar_tabla(2))
 
     # Vuelve a obtener los datos de la Web después de borrar la primera columna de la tabla
     datosTablaBorrados = funciones.buscarElementosNombreClase(ruta.tabla, 'rt-td')
@@ -121,7 +125,7 @@ def test_modificar():
     funciones.getURL(ruta.URL)
 
     # Click en modificar (se puede cambiar la fila que se quiere modificar cambiando el número)
-    funciones.Click(ruta.modificarTabla(2))
+    funciones.Click(modificar_tabla(2))
 
     # Aquí se editan los datos que del usuario que vamos a modificar
     n = 0
@@ -150,5 +154,3 @@ def test_modificar():
 
     # Hace una captura de pantalla
     funciones.capturar(dateTime.obtener_fecha_hora_actual())
-
-

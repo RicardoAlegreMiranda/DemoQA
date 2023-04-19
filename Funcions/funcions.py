@@ -1,12 +1,12 @@
 import time
+
+import allure
+from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import allure
-from allure_commons.types import AttachmentType
 
 t = 0.3
-
 
 class Global_Funcions:
 
@@ -76,18 +76,14 @@ class Global_Funcions:
             # Busca Elemento
             elemento = self.driver.find_element(by=By.XPATH, value=XPATH)
 
-            # Hace scroll hasta el element
-            #self.driver.execute_script("arguments[0].scrollIntoView(true);", elemento)
-            # Espera hasta que el elemento sea visible
-            #wait = WebDriverWait(self.driver, 3)
-            #wait.until(EC.visibility_of(elemento))
+            # Clic en el Elemento
             elemento.click()
 
-            # Aviso de que se hace click
-            print("Click: " + XPATH + "\n")
+            # Aviso de que se hace clic
+            print("Clic: " + XPATH + "\n")
             time.sleep(t)
         except:
-            print("No se pudo hacer Click en: " + XPATH + "\n")
+            print("No se pudo hacer Clic en: " + XPATH + "\n")
 
     # Este método permite borrar los datos de un campo
     def Limpiar(self, XPATH):

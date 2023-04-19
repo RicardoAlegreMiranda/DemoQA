@@ -1,4 +1,4 @@
-from Elements.Paths.paths_CheckBox import CheckBox
+from Elements.Paths.paths_CheckBox import CheckBox, dato_obtenido
 from Funcions import funcions, dateTime
 from selenium import webdriver
 
@@ -46,8 +46,8 @@ def test_CheckBox1():
     funciones.Click(ruta.desplegale)
 
     # Este bucle llama al método que sirve para obtener los datos que muestra la pantalla y los guarda en una lista
-    for n in range(2, len(ruta.text_expected)):
-        dato = ruta.dato_obtenido(n, driver)
+    for numero in range(2, len(ruta.text_expected)):
+        dato = dato_obtenido(numero, driver)
         datos_obtenidos.append(dato)
 
     # Este bucle compara los datos obtenidos en pantalla con los datos esperados

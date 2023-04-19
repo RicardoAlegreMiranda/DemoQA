@@ -1,7 +1,7 @@
 import os
 
 
-class form: #Aqui están las rutas de los XPATH
+class form:  # Aquí están las rutas de los XPATH
     URL = "https://demoqa.com/automation-practice-form"
     nombre = "//input[@id='firstName']"
     apellido = "//input[contains(@id,'lastName')]"
@@ -11,7 +11,8 @@ class form: #Aqui están las rutas de los XPATH
     mes = "//select[@class='react-datepicker__month-select']"
     ano = "//select[contains(@class,'react-datepicker__year-select')]"
     dia = "//div[@class='react-datepicker__day react-datepicker__day--025'][contains(.,'25')]"
-    asignaturas = "//div[contains(@class,'subjects-auto-complete__value-container subjects-auto-complete__value-container--is-multi css-1hwfws3')]"
+    asignaturas = "//div[contains(@class,'subjects-auto-complete__value-container " \
+                  "subjects-auto-complete__value-container--is-multi css-1hwfws3')]"
     direccion = "//textarea[contains(@id,'currentAddress')]"
     estado = "//div[@class=' css-1hwfws3'][contains(.,'Select State')]"
     ciudad = "//div[@class='col-md-4 col-sm-12'][contains(.,'Select City')]"
@@ -29,12 +30,11 @@ class form: #Aqui están las rutas de los XPATH
 class Excel:
     HojaCorreo = "Form"
 
+# Esta función toma un texto con palabras separadas por comas y devuelve una lista de palabras.
 def separar_palabras(texto):
 
-  # Esta función toma un texto con palabras separadas por comas y devuelve una lista de palabras.
-
-    palabras = texto.split(",") # Dividir el texto en palabras utilizando la coma como delimitador
-    palabras = [palabra.strip() for palabra in palabras] # Eliminar espacios en blanco alrededor de cada palabra
+    palabras = texto.split(",")  # Dividir el texto en palabras utilizando la coma como delimitador
+    palabras = [palabra.strip() for palabra in palabras]  # Eliminar espacios en blanco alrededor de cada palabra
     return palabras
 
 
@@ -92,7 +92,7 @@ def obtenerGenero(dato):
 
 # Este método sirve para obtener el XPATH del día (dentro del datapicker) correcto donde hacer click
 def obtenerDía(día):
-    day = "//div[contains(@class,'day--0" + str(día) +"')]"
+    day = "//div[contains(@class,'day--0" + str(día) + "')]"
 
     return day
 

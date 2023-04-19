@@ -19,7 +19,7 @@ acciones = None  # Acciones
 #################################################################
 
 
-# Esta prueba consiste en validar la función de c y aviso de los 3 botones en la web
+# Esta prueba consiste en validar la función de los botones y aviso de los 3 botones en la web
 
 # Esta es la configuración global para las pruebas (abre el driver y se lo envía mis funciones para iniciarlas)
 def setup_function():
