@@ -4,7 +4,7 @@ class TextBox:
     Email = "//input[contains(@id,'userEmail')]"
     CAddress = "//textarea[contains(@id,'currentAddress')]"#Current Address
     PAdress = "//textarea[contains(@id,'permanentAddress')]" #Permanent Address
-    Submit = "//button[contains(@id,'submit')]"
+    Submit = "//button[@id='submit']"
     finalName = "//p[contains(@id,'name')]"
     finalEmail = "//p[contains(@id,'email')]"
     finalCAddress = "//p[contains(@id,'currentAddress')]"
