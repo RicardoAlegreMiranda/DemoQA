@@ -106,7 +106,7 @@ class Global_Funcions:
             print("Clic_by_id: " + ID + "\n")
             time.sleep(t)
         except:
-            print("No se pudo hacer Clic_by_id: " + XPATH + "\n")
+            print("No se pudo hacer Clic_by_id: " + ID + "\n")
 
     # Este método permite borrar los datos de un campo
     def Limpiar(self, XPATH):
