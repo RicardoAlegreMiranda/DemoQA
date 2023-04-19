@@ -85,7 +85,7 @@ class Global_Funcions:
             time.sleep(t)
         except:
             # Intenta hacer clic por ID en lugar de XPATH
-            click_by_id(self.driver, XPATH)
+            self.click_by_id(self.driver, XPATH)
             print("No se pudo hacer Clic_by_xpath: " + XPATH + "\n")
 
     # Hace click en un elemento por ID
