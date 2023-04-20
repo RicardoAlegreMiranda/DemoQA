@@ -2,6 +2,7 @@ import allure
 from Funcions import funcions, funcitions_excel, dateTime
 from Elements.Paths import paths_TextBox
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 #################################################################
 ############### <<Carga la configuración previa>> ###############
@@ -26,6 +27,11 @@ def setup_function():
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)  # Funciones
 
+    # Se abre el navegador con la URL indicada
+    funciones.getURL(ruta.Url)
+
+    funciones.cambia_zoom() # Cambia el zoom a 0.7
+
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
     print("Fin de la prueba")
@@ -43,9 +49,6 @@ def test_Datos_FormularioWeb():
     funciones_excel = funcitions_excel.FuncionesExcel(hojaExcelOK)
     filas = funciones_excel.obtener_num_filas()  # El número de filas que tiene el documento Excel
     columnas = funciones_excel.obtener_num_columnas()  # El número de columnas del documento
-
-    # Se abre el navegador con la URL indicada
-    funciones.getURL(ruta.Url)
 
     # Se abre un bucle para ejecutar la prueba (Busca el dato en el excel, lo escribe en la web y lo válida)
     for fila in range(2, filas + 1):
@@ -88,9 +91,6 @@ def test_Correo_Invalido():
     funciones_excel = funcitions_excel.FuncionesExcel(hojaExcelCorreo)
     filas = funciones_excel.obtener_num_filas()  # El número de filas que tiene el documento Excel
     columnas = funciones_excel.obtener_num_columnas()  # El número de columnas del documento
-
-    # Se abre el navegador con la URL indicada
-    funciones.getURL(ruta.Url)
 
     # Se abre un bucle para ejecutar la prueba (Busca el dato en el excel, lo escribe en la web y lo válida)
     for fila in range(2, filas + 1):

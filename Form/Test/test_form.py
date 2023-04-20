@@ -105,16 +105,12 @@ def test_Formulario():
     actions.send_keys(lista_datos[6] + Keys.ENTER)
     actions.perform()
 
-    # Ejecuta una función JavaScript para cambiar el nivel de zoom de la página y espera
-    driver.execute_script("document.body.style.zoom = '{}';".format(0.7))
-    funciones.wait_zoom(ruta.form.zoom)
+    # Cambia el Zoom a 0.7 para evitar que el botón submit quede escondido
+    funciones.cambia_zoom()
 
     # Pulsa tab + Enter (si intentamos pulsar en Submit directamente da error)
     actions.send_keys(Keys.TAB + Keys.ENTER)
     actions.perform()
-
-    # Esperar a que el modal esté presente
-    funciones.wait_zoom(ruta.form.tabla_modal)
 
     # Compara los datos encontrados dentro del Modal con los datos Esperados
     datos_modal = funciones.getText(ruta.form.tabla_modal)

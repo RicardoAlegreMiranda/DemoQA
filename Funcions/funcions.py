@@ -85,28 +85,16 @@ class Global_Funcions:
             time.sleep(t)
         except:
             # Intenta hacer clic por ID en lugar de XPATH
-            self.click_by_id(XPATH)
             print("No se pudo hacer Clic_by_xpath: " + XPATH + "\n")
+            self.click_script(XPATH) # Si falla el método principal intenta hacer click de manera alternativa
 
-    # Hace click en un elemento por ID
-    def click_by_id(self, ID):
+    # Método para hacer click por Script si falla el método principal
+    def click_script(self, xpath):
         try:
-
-            # Espera a cargar elemento
-            wait = WebDriverWait(self.driver, 5)
-            wait.until(EC.presence_of_element_located((By.ID, ID)))
-
-            # Busca Elemento
-            elemento = self.driver.find_element(by=By.ID, value=ID)
-
-            # Clic en el Elemento
-            elemento.click()
-
-            # Aviso de que se hace clic
-            print("Clic_by_id: " + ID + "\n")
-            time.sleep(t)
+            element = self.driver.find_element(by=By.XPATH, value=xpath)
+            self.driver.execute_script("arguments[0].click();", element)
         except:
-            print("No se pudo hacer Clic_by_id: " + ID + "\n")
+            print("No se pudo hacer click por script: " + xpath)
 
     # Este método permite borrar los datos de un campo
     def Limpiar(self, XPATH):
@@ -147,6 +135,8 @@ class Global_Funcions:
         except:
             print("No se encuentran enlaces")
 
-    def wait_zoom(self, xpath):
-        wait = WebDriverWait(self.driver, 5)  # Configura un WebDriverWait con un tiempo de espera máximo de 10 segundos
-        wait.until(EC.presence_of_element_located((By.XPATH, xpath)))
+    # Este método cambia el zoom de la página actual a 0.7 para que todos los elementos sean visibles
+    def cambia_zoom(self):
+        self.driver.execute_script("document.body.style.zoom = '{}';".format(0.7))
+        wait = WebDriverWait(self.driver, 5)  # Configura un WebDriverWait con un tiempo de espera máximo de 5 segundos
+        wait.until(EC.presence_of_element_located((By.XPATH, "//*[contains(@style, 'zoom: 0.7')]")))
