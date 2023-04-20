@@ -158,10 +158,11 @@ def seleccionar_fecha_calendario():
     # Convertir la cadena de texto String de fecha en objeto datetime
     fecha_objeto = datetime.strptime(fecha_str, '%Y-%m-%d %H:%M:%S')
 
-    # Uso el objeto datetime con la propiedad Select para seleccionar el Mes que viene
+    # Uso el objeto "fecha_objeto" con la propiedad Select para seleccionar el mes
     SelectMes = funciones.searchXP(ruta.form.mes)
     SelectorMes = Select(SelectMes)
-    SelectorMes.select_by_visible_text(ruta.obtenerMes(fecha_objeto.month))
+    SelectorMes.select_by_value(str((fecha_objeto.month-1)))
+
 
     # Selecciono el año del desplegable
     SelectAno = funciones.searchXP(ruta.form.ano)
@@ -173,7 +174,7 @@ def seleccionar_fecha_calendario():
     lista_datos[8] = str(fecha_objeto.day) + " " + ruta.obtenerMes(fecha_objeto.month) + "," + str(fecha_objeto.year)
 
     # hace Click en el día y Cierra el datePicker
-    funciones.Click(ruta.obtenerDía(fecha_objeto.day))
+    funciones.Click(ruta.obtener_dia(fecha_objeto))
 
 
 # Obtiene los hobbies y devuelve los XPATH en una lista

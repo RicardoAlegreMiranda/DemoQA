@@ -25,15 +25,35 @@ class form:  # Aquí están las rutas de los XPATH
     lectura = "//label[@for='hobbies-checkbox-2'][contains(.,'Reading')]"
     Lista_Elementos = [nombre, apellido, mail, movil, direccion]
 
+
 class Excel:
     HojaCorreo = "Form"
 
+
 # Esta función toma un texto con palabras separadas por comas y devuelve una lista de palabras.
 def separar_palabras(texto):
-
     palabras = texto.split(",")  # Dividir el texto en palabras utilizando la coma como delimitador
     palabras = [palabra.strip() for palabra in palabras]  # Eliminar espacios en blanco alrededor de cada palabra
     return palabras
+
+
+# Este método sirve para obtener el XPATH del día (dentro de date-picker) correcto donde hacer click
+def obtener_dia(fecha_objeto):
+
+    # Obtener el día de la semana actual
+    dia_semana = fecha_objeto.strftime('%A')
+    # Obtener el mes actual
+    mes = fecha_objeto.strftime('%B')
+    # Obtener el día con el formato adecuado
+    dia_mes = str(fecha_objeto.day) + (
+        'th' if 11 <= fecha_objeto.day <= 13 else {1: 'st', 2: 'nd', 3: 'rd'}.get(fecha_objeto.day % 10, 'th'))
+    if dia_mes.startswith('0'):
+        dia_mes = dia_mes[1:]
+    # Obtener el año
+    anio = fecha_objeto.strftime('%Y')
+    # EL xpath debe tener un formato similar a este //div[contains(@aria-label,'Choose Sunday, May 3rd, 1987')]
+    xpath = f"//div[contains(@aria-label,'Choose {dia_semana}, {mes} {dia_mes}, {anio}')]"
+    return xpath
 
 
 # Este método sirve para obtener el mes (en formato texto en inglés) para poder seleccionar el mes del datepicker
@@ -74,6 +94,7 @@ def obtenerMes(mes):
 
     return Mes_Escrito  # Devuelve el mes en formato Texto
 
+
 # Este método obtiene el XPATH del Género y lo devuelve
 def obtenerGenero(dato):
     xpath = ""
@@ -82,17 +103,14 @@ def obtenerGenero(dato):
     other = "//label[@for='gender-radio-3'][contains(.,'Other')]"
     # Aquí se establece cuál es género obtenido en el Excel y que debe marcar el formulario
     match dato:
-        case "Male": xpath = male
-        case "Female": xpath = female
-        case "Other": xpath = other
+        case "Male":
+            xpath = male
+        case "Female":
+            xpath = female
+        case "Other":
+            xpath = other
 
     return xpath
-
-# Este método sirve para obtener el XPATH del día (dentro del datapicker) correcto donde hacer click
-def obtenerDía(día):
-    day = "//div[contains(@class,'day--0" + str(día) + "')]"
-
-    return day
 
 
 # Este método sirve para modificar la ruta actual y convertirla en la ruta relativa necesaria para la subida
