@@ -65,6 +65,8 @@ def test_Formulario():
 
     # Escribe el Nombre Apellido, Correo, Teléfono y Dirección
     for n in range(0, 5):
+
+        # Llama al método para escribir los datos
         funciones.writeXP(lista_elementos[n], lista_datos[n])
 
     # Obtiene el género y lo selecciona en la web
@@ -74,13 +76,15 @@ def test_Formulario():
     funciones.Click(ruta.form.datepicker)
 
     # Llama al método que escribe en el DatePicker la fecha de prueba (Obtenida del Excel)
-    selecionarFechaCalendario()
+    seleccionar_fecha_calendario()
 
     # Llama la método que revuelve el Listado de Asignaturas
     asignaturas = ruta.separar_palabras(lista_datos[9])
 
-    # Escribe las asignaturas en el autocompletar y pulsar ENTER
+    # Clic en asignaturas
     funciones.Click(ruta.form.asignaturas)
+
+    # Escribe las asignaturas en el autocompletar y pulsar ENTER
     for asignatura in asignaturas:
         actions.send_keys(asignatura)
         actions.perform()
@@ -89,18 +93,18 @@ def test_Formulario():
         actions.perform()
 
     # Obtiene el listado y hace Click en los hobbies
-    for hobbie in obtenerHobbies(lista_datos[10]):
+    for hobbie in obtener_Hobbies(lista_datos[10]):
         funciones.Click(hobbie)
 
     # Sube la imagen JPG
-
     funciones.writeXP(ruta.form.btn_uplodad, ruta.ruta_relativa())
-    # Escribe el estado
+
+    # Escribe el Estado
     funciones.Click(ruta.form.estado)
     actions.send_keys(lista_datos[5] + Keys.ENTER)
     actions.perform()
 
-    # Escribe la ciudad
+    # Escribe la Ciudad
     funciones.Click(ruta.form.ciudad)
     actions.send_keys(lista_datos[6] + Keys.ENTER)
     actions.perform()
@@ -108,15 +112,26 @@ def test_Formulario():
     # Cambia el Zoom a 0.7 para evitar que el botón submit quede escondido
     funciones.cambia_zoom()
 
-    # Pulsa tab + Enter (si intentamos pulsar en Submit directamente da error)
-    actions.send_keys(Keys.TAB + Keys.ENTER)
-    actions.perform()
+    # Intenta hacer clic en submit
+    try:
+        funciones.Click(ruta.form.submit)
+    except:
+        # Si el clic falla pulsa tab + Enter si el hacer click falla
+        actions.send_keys(Keys.TAB + Keys.ENTER)
+        actions.perform()
 
-    # Compara los datos encontrados dentro del Modal con los datos Esperados
-    datos_modal = funciones.getText(ruta.form.tabla_modal)
+    # Guarda los datos de la WebTable en una lista
+    celdas = funciones.search_tag_name("td")
+    datos_modal = []  # Lista para guardar los datos de las celdas
+    for celda in celdas:
+        datos_modal.append(celda.text)
+
+    # Compara si los datos del excel están contenidos en los datos obtenidos de la WebTable
     for date in lista_datos:
 
-        assert str(date) in datos_modal
+        # Compara si el dato se encuentra en cualquier cadena de texto de los resultados esperados
+        assert any(str(date) in dato for dato in datos_modal)
+
     # Hace una captura de pantalla
     funciones.capturar(dateTime.obtener_fecha_hora_actual())
 
@@ -133,10 +148,10 @@ def test_Formulario():
 #################################################################
 
 
-# Este método sirve para obtener la fecha del Excel, modificarla a un formato compatible con el datepicker de la Web y
+# Este método sirve para obtener la fecha del Excel, modificarla a un formato compatible con él date-picker de la Web y
 # después pulsar sobre la fecha correcta, llamado a esta función se ahorran todos estos pasos y se marca
 # la fecha correcta
-def selecionarFechaCalendario():
+def seleccionar_fecha_calendario():
     # Almaceno la fecha en una variable String
     fecha_str = str(lista_datos[8])
 
@@ -162,7 +177,7 @@ def selecionarFechaCalendario():
 
 
 # Obtiene los hobbies y devuelve los XPATH en una lista
-def obtenerHobbies(hobbies):
+def obtener_Hobbies(hobbies):
     lista_hobbies = []
 
     if "Music" in hobbies:

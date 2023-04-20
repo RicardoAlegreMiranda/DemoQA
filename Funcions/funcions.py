@@ -50,6 +50,11 @@ class Global_Funcions:
         except:
             print("No se ha encontrado elemento ID: " + ID + "\n")
 
+    # Busca un elemento por tag_name
+    def search_tag_name(self, tag):
+        elemento = self.driver.find_elements(by=By.TAG_NAME, value=tag)
+        return elemento
+
     # Escribe en un elemento WEB
     def writeXP(self, XPATH, Texto):
         try:
@@ -91,8 +96,10 @@ class Global_Funcions:
     # Método para hacer click por Script si falla el método principal
     def click_script(self, xpath):
         try:
+            # Este es el método alternativo para hacer clic
             element = self.driver.find_element(by=By.XPATH, value=xpath)
             self.driver.execute_script("arguments[0].click();", element)
+            print("Click_script: " + xpath)
         except:
             print("No se pudo hacer click por script: " + xpath)
 

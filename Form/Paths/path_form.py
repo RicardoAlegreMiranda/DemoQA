@@ -19,7 +19,6 @@ class form:  # Aquí están las rutas de los XPATH
     submit = "//button[contains(@id,'submit')]"
     ruta_imagen = "..//..//Files//sampleFile.jpeg"
     btn_uplodad = "//*[@id='uploadPicture']"
-    tabla_modal = "/html/body/div[4]/div/div/div[2]/div/table"
     closed_modal = "//button[contains(@id,'closeLargeModal')]"
     deportes = "//label[contains(@for,'hobbies-checkbox-1')]"
     musica = "//label[contains(@for,'hobbies-checkbox-3')]"

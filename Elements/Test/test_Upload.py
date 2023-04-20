@@ -27,7 +27,7 @@ options.add_experimental_option('prefs', prefs)
 # Esta es la configuración global para las pruebas (abre el driver y se lo envía mis funciones para iniciarlas)
 def setup_function():
     global driver, funciones
-    driver = webdriver.Chrome(chrome_options=options)  # Driver Modificado con carpeta de descarga diferente
+    driver = webdriver.Chrome(options=options)  # Driver Modificado con carpeta de descarga diferente
     funciones = funcions.Global_Funcions(driver)  # Funciones
 
 
