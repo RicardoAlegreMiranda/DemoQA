@@ -35,6 +35,7 @@ class Global_Funcions:
             time.sleep(t)
             return elemento
         except:
+            return False
             print("No se ha encontrado elemento XPATH: " + XPATH + "\n")
 
     # Busca un elemento por ID
@@ -91,7 +92,7 @@ class Global_Funcions:
         except:
             # Intenta hacer clic por ID en lugar de XPATH
             print("No se pudo hacer Clic_by_xpath: " + XPATH + "\n")
-            self.click_script(XPATH) # Si falla el método principal intenta hacer click de manera alternativa
+            self.click_script(XPATH)  # Si falla el método principal intenta hacer click de manera alternativa
 
     # Método para hacer click por Script si falla el método principal
     def click_script(self, xpath):
@@ -125,6 +126,11 @@ class Global_Funcions:
 
     # Este método devuelve el texto de una clase
     def getText(self, XPATH):
+        # Espera a cargar elemento
+        wait = WebDriverWait(self.driver, 5)
+        wait.until(EC.presence_of_element_located((By.XPATH, XPATH)))
+
+        # Encuentra el elemento, obtiene el texto y lo devuelve
         texto = self.driver.find_element(by=By.XPATH, value=XPATH).text
         return texto
 
@@ -142,7 +148,7 @@ class Global_Funcions:
         except:
             print("No se encuentran enlaces")
 
-    # Este método cambia el zoom de la página actual a 0.7 para que todos los elementos sean visibles
+    # Este método cambia el Zoom de la página actual a 0.7 para que todos los elementos sean visibles
     def cambia_zoom(self):
         self.driver.execute_script("document.body.style.zoom = '{}';".format(0.7))
         wait = WebDriverWait(self.driver, 5)  # Configura un WebDriverWait con un tiempo de espera máximo de 5 segundos

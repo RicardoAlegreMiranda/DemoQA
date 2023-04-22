@@ -163,7 +163,6 @@ def seleccionar_fecha_calendario():
     SelectorMes = Select(SelectMes)
     SelectorMes.select_by_value(str((fecha_objeto.month-1)))
 
-
     # Selecciono el año del desplegable
     SelectAno = funciones.searchXP(ruta.form.ano)
     SelectorAno = Select(SelectAno)
