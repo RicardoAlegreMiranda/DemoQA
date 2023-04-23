@@ -32,6 +32,8 @@ def setup_function():
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)  # Funciones
 
+    # Abre en navegador
+    funciones.getURL(ruta.URL)
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
     print("Fin de la prueba")
@@ -45,9 +47,6 @@ def teardown_function():
 # Esta prueba consiste en añadir nuevas columnas de datos en la Web Table, los datos serán pre-cargados desde una hoja
 # de Excel, y después de escribir todos los datos, válida que los datos de pruebas están presentes en la Web
 def test_nuevaFila():
-
-    # Abre en navegador
-    funciones.getURL(ruta.URL)
 
     # Se abre un bucle para rellenar el WebTable con los datos obtenidos del Excel
     for fila in range(2, filas + 1):
@@ -89,9 +88,6 @@ def test_nuevaFila():
 # Este test consiste en validar que se borran los datos al pulsar en la papelera
 def test_borrarDatos():
 
-    # Abre en navegador
-    funciones.getURL(ruta.URL)
-
     # Este método obtiene todos los elementos de la tabla de datos Web
     datosTabla = funciones.buscarElementosNombreClase(ruta.tabla, 'rt-td')
 
@@ -121,8 +117,6 @@ def test_borrarDatos():
 
 # Esta prueba consiste en modificar los datos ya existentes en una columna e introducir nuevos datos en su lugar
 def test_modificar():
-    # Abre en navegador
-    funciones.getURL(ruta.URL)
 
     # Click en modificar (se puede cambiar la fila que se quiere modificar cambiando el número)
     funciones.Click(modificar_tabla(2))

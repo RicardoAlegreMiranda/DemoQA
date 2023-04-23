@@ -18,9 +18,9 @@ class Global_Funcions:
     def getURL(self, url):
         try:
             self.driver.get(url)
+            time.sleep(t)
             self.driver.maximize_window()
             print("\nPágina abierta :" + str(url))
-            time.sleep(t)
         except:
             print("No se pudo abrir la página: " + url)
 
@@ -35,8 +35,8 @@ class Global_Funcions:
             time.sleep(t)
             return elemento
         except:
-            return False
             print("No se ha encontrado elemento XPATH: " + XPATH + "\n")
+            return False
 
     # Busca un elemento por ID
     def searchID(self, ID):
