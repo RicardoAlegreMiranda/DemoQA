@@ -10,7 +10,7 @@ from Funcions.dateTime import obtener_fecha_hora_actual
 #################################################################
 
 # Inicia las variables Globales necesarias para que sean accesibles
-ruta = paths_alerts.alerts  # Método para obtener los XPATH del formulario Web (llamado TextBox)
+ruta = paths_alerts.alerts
 driver = None
 funciones = None
 funciones_nativas = None
@@ -29,6 +29,12 @@ def teardown_function():
     print("Fin de la prueba")
     driver.close()
 
+
+#################################################################
+################# <<AQUÍ EMPIEZAN LAS PRUEBAS > #################
+#################################################################
+
+# En esta prueba se validan todos los alerts
 def test_alerts():
 
     # Hace clic en el botón 1

@@ -10,7 +10,7 @@ from Funcions.dateTime import obtener_fecha_hora_actual
 #################################################################
 
 # Inicia las variables Globales necesarias para que sean accesibles
-ruta = paths_browser_windows.browser  # Método para obtener los XPATH del formulario Web (llamado TextBox)
+ruta = paths_browser_windows.browser
 driver = None
 funciones = None
 funciones_nativas = None
@@ -28,6 +28,11 @@ def setup_function():
 def teardown_function():
     print("Fin de la prueba")
     driver.close()
+
+
+#################################################################
+################# <<AQUÍ EMPIEZAN LAS PRUEBAS > #################
+#################################################################
 
 # Se prueban los 3 botones con sus 3 funcionalidades (Nueva pestaña, nueva ventana, mensaje en ventana)
 def test_browser_windows():

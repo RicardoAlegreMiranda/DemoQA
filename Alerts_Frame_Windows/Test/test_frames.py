@@ -9,7 +9,7 @@ from Funcions.dateTime import obtener_fecha_hora_actual
 #################################################################
 
 # Inicia las variables Globales necesarias para que sean accesibles
-ruta = paths_frames.frames  # Método para obtener los XPATH del formulario Web (llamado TextBox)
+ruta = paths_frames.frames
 driver = None
 funciones = None
 
@@ -26,6 +26,11 @@ def teardown_function():
     print("Fin de la prueba")
     driver.close()
 
+#################################################################
+################# <<AQUÍ EMPIEZAN LAS PRUEBAS > #################
+#################################################################
+
+# En esta prueba válida el texto que hay dentro de los 2 iframes, además se cambia el tamaño de un iframe
 def test_frames():
     # Guarda los iFrames en variables
     iframe_big = funciones.searchXP(ruta.frame_big_1)

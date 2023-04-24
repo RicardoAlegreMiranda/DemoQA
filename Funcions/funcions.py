@@ -56,6 +56,11 @@ class Global_Funcions:
         elemento = self.driver.find_elements(by=By.TAG_NAME, value=tag)
         return elemento
 
+    # Busca un elemento por CSS Selector
+    def search_css_selector(self, CSS):
+        elemento_css_selector = self.driver.find_elements(by=By.CSS_SELECTOR, value=CSS)
+        return  elemento_css_selector
+
     # Escribe en un elemento WEB
     def writeXP(self, XPATH, Texto):
         try:
