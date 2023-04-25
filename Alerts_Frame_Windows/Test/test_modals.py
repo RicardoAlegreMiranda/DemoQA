@@ -1,6 +1,7 @@
+import allure
 from selenium import webdriver
 
-from Alerts_Frame_Windows.Paths import paths_nested_frames
+from Alerts_Frame_Windows.Paths import paths_modals
 from Funcions import funcions
 from Funcions.dateTime import obtener_fecha_hora_actual
 
@@ -9,7 +10,7 @@ from Funcions.dateTime import obtener_fecha_hora_actual
 #################################################################
 
 # Inicia las variables Globales necesarias para que sean accesibles
-ruta = paths_nested_frames.nested
+ruta = paths_modals.modal
 driver = None
 funciones = None
 
@@ -30,31 +31,36 @@ def teardown_function():
 ################# <<AQUÍ EMPIEZAN LAS PRUEBAS > #################
 #################################################################
 
-def test_parents_iframes():
+@allure.severity(allure.severity_level.MINOR)
+@allure.description("""Esta prueba consiste en probar la funcionalidad de ambos modals""")
+def test_modals():
 
-    # Encuentra los iframes
-    frame_padre = funciones.searchXP(ruta.parent_frame)
+    # Pulsa en el botón para abrir el modal pequeño
+    funciones.Click(ruta.button_small)
 
-    # Cambia el foco a parent frame
-    driver.switch_to.frame(frame_padre)
+    # Obtiene el texto contenido en el modal pequeño
+    text_small_modal = funciones.getText(ruta.text_small)
 
-    # Busca el frame hijo
-    frame_hijo = funciones.searchXP(ruta.child_frame)
-
-    # Guarda el texto del frame padre
-    texto_padre = funciones.searchXP(ruta.text_parent).text
-
-    # Compara el texto obtenido con el texto esperado
-    assert texto_padre == ruta.text_expect_parent_frame
-
-    # Cambia el foco a parent frame
-    driver.switch_to.frame(frame_hijo)
-
-    # Guarda el texto del frame hijo
-    texto_hijo = funciones.searchXP(ruta.text_child).text
-
-    # Compara el texto obtenido con el texto esperado
-    assert texto_hijo == ruta.text_expect_child_frame
+    # Comprueba que el texto sea igual al esperado
+    assert text_small_modal == ruta.text_expected
 
     # Capturar de pantalla con fecha actual
     funciones.capturar(obtener_fecha_hora_actual())
+
+    # Cierra el modal pequeño
+    funciones.Click(ruta.close_small)
+
+    # Abre el modal grande
+    funciones.Click(ruta.button_big)
+
+    # Obtiene el texto contenido en el modal grande
+    text_big_modal = funciones.getText(ruta.text_big)
+
+    # Comprueba que el texto sea igual al esperado
+    assert text_big_modal == ruta.text_expected_big
+
+    # Capturar de pantalla con fecha actual
+    funciones.capturar(obtener_fecha_hora_actual())
+
+    # Cierra el modal grande
+    funciones.Click(ruta.close_big)

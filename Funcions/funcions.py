@@ -132,12 +132,15 @@ class Global_Funcions:
     # Este método devuelve el texto de una clase
     def getText(self, XPATH):
         # Espera a cargar elemento
-        wait = WebDriverWait(self.driver, 5)
-        wait.until(EC.presence_of_element_located((By.XPATH, XPATH)))
+        try:
+            wait = WebDriverWait(self.driver, 5)
+            wait.until(EC.presence_of_element_located((By.XPATH, XPATH)))
 
-        # Encuentra el elemento, obtiene el texto y lo devuelve
-        texto = self.driver.find_element(by=By.XPATH, value=XPATH).text
-        return texto
+            # Encuentra el elemento, obtiene el texto y lo devuelve
+            texto = self.driver.find_element(by=By.XPATH, value=XPATH).text
+            return texto
+        except:
+            print("No se pudo obtener el texto en ", XPATH)
 
     # Este método busca los elementos de una clase por su nombre
     def buscarElementosNombreClase(self, XPATH, VALUE):
