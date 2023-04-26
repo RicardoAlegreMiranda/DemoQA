@@ -29,7 +29,7 @@ def setup_function():
     global driver, funciones
     driver = webdriver.Chrome(options=options)  # Driver Modificado con carpeta de descarga diferente
     funciones = funcions.Global_Funcions(driver)  # Funciones
-
+    funciones.getURL(ruta.URL)  # Abre el navegador
 
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
@@ -43,8 +43,6 @@ def teardown_function():
 
 # Esta prueba válida que la imagen se sube de manera correcta
 def test_carga_imagen():
-    # Abre el navegador
-    funciones.getURL(ruta.URL)
 
     # Obtén la ruta del directorio actual
     ruta_actual = os.path.dirname(os.path.abspath(__file__))
@@ -68,8 +66,6 @@ def test_carga_imagen():
 
 # Esta prueba válida que se descarga la imagen de manera correcta
 def test_Descarga():
-    # Abre el navegador
-    funciones.getURL(ruta.URL)
 
     # Pulsa en Download para descargar la imagen
     funciones.Click(ruta.Download)

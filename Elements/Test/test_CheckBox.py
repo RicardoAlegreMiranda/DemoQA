@@ -21,6 +21,7 @@ def setup_function():
     global driver, funciones
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)  # Funciones
+    funciones.getURL(ruta.URL)
 
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
@@ -28,9 +29,6 @@ def teardown_function():
     driver.close()
 
 def test_CheckBox1():
-    # Abre el navegador:
-    funciones.getURL(ruta.URL)
-
     # Despliega todos los CheckBox (hace Click en cada uno de ellos)
     for n in ruta.Desplegar:
         funciones.Click(n)

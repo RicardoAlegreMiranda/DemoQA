@@ -17,7 +17,7 @@ def setup_function():
     global driver, funciones
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)  # Funciones
-
+    funciones.getURL(ruta.URL)
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
     print("Fin de la prueba")
@@ -30,8 +30,6 @@ def teardown_function():
 
 # Esta prueba consiste en validar que se cargan las imágenes de la web con el tamaño esperado
 def test_images():
-    # Abre el navegador
-    funciones.getURL(ruta.URL)
 
     # Obtiene las medidas la imagen 1
     imagen1 = funciones.searchXP(ruta.imagen1)
@@ -54,8 +52,6 @@ def test_images():
 
 # Esta prueba consiste en validar que los links funcionan correctamente al pulsar sobre ellos
 def test_links():
-    # Abre el navegador
-    funciones.getURL(ruta.URL)
 
     # Click en el primer link y espera que cargue la página
     funciones.Click(ruta.link1)

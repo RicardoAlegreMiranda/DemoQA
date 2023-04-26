@@ -1,3 +1,4 @@
+import allure
 from selenium import webdriver
 
 from Alerts_Frame_Windows.Paths import paths_frames
@@ -19,7 +20,7 @@ def setup_function():
     # Inicia el Driver y las funciones Globales
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)
-    driver.get(ruta.URL)
+    funciones.getURL(ruta.URL)
 
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
@@ -30,7 +31,9 @@ def teardown_function():
 ################# <<AQUÍ EMPIEZAN LAS PRUEBAS > #################
 #################################################################
 
-# En esta prueba válida el texto que hay dentro de los 2 iframes, además se cambia el tamaño de un iframe
+@allure.severity(allure.severity_level.NORMAL)
+@allure.description("""En esta prueba válida el texto que hay dentro de los 2 iframes, 
+además se cambia el tamaño de un iframe""")
 def test_frames():
     # Guarda los iFrames en variables
     iframe_big = funciones.searchXP(ruta.frame_big_1)

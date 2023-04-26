@@ -20,7 +20,7 @@ def setup_function():
     # Inicia el Driver y las funciones Globales
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)
-    driver.get(ruta.URL)
+    funciones.getURL(ruta.URL)
 
 # Esta es la función que da cierre a cada prueba
 def teardown_function():

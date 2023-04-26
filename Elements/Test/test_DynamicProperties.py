@@ -19,7 +19,7 @@ def setup_function():
     global driver, funciones
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)  # Funciones
-
+    funciones.getURL(ruta.URL)  # Abre el navegador
 
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
@@ -32,8 +32,6 @@ def teardown_function():
 #################################################################
 
 def test_botones():
-    # Abre el navegador
-    funciones.getURL(ruta.URL)
 
     # Espera a que los botones dinámicos se activen en pantalla
     time.sleep(5.1)

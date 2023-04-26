@@ -1,3 +1,4 @@
+import allure
 from selenium import webdriver
 
 from Alerts_Frame_Windows.Paths import paths_browser_windows
@@ -22,19 +23,20 @@ def setup_function():
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)
     funciones_nativas = FuncionsBrowser(driver)
-    driver.get(ruta.URL)
+    funciones.getURL(ruta.URL)
 
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
     print("Fin de la prueba")
     driver.close()
 
-
 #################################################################
 ################# <<AQUÍ EMPIEZAN LAS PRUEBAS > #################
 #################################################################
 
-# Se prueban los 3 botones con sus 3 funcionalidades (Nueva pestaña, nueva ventana, mensaje en ventana)
+@allure.severity(allure.severity_level.MINOR)
+@allure.description("""Se prueban los 3 botones con sus 3 funcionalidades 
+(Nueva pestaña, nueva ventana, mensaje en ventana)""")
 def test_browser_windows():
     # Pulsar en Nueva ventana:
     funciones.Click(ruta.new_tab)

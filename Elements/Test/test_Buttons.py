@@ -27,7 +27,7 @@ def setup_function():
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = Global_Funcions(driver)  # Funciones
     acciones = ActionChains(driver)
-
+    funciones.getURL(ruta.URL)
 
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
@@ -36,8 +36,6 @@ def teardown_function():
 
 
 def test_clickBotones():
-    # Abre el navegador
-    funciones.getURL(ruta.URL)
 
     # Doble Click
     btnDobleClick = funciones.searchXP(ruta.doubleclick)

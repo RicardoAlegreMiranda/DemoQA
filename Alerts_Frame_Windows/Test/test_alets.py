@@ -1,3 +1,4 @@
+import allure
 from selenium import webdriver
 
 from Alerts_Frame_Windows.Funcions_Alerts_Frame_Windows.funcions_alerts import FuncionsAlerts
@@ -22,7 +23,7 @@ def setup_function():
     driver = webdriver.Chrome()  # Driver Chrome
     funciones = funcions.Global_Funcions(driver)
     funciones_nativas = FuncionsAlerts(driver)
-    driver.get(ruta.URL)
+    funciones.getURL(ruta.URL)
 
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
@@ -34,7 +35,8 @@ def teardown_function():
 ################# <<AQUÍ EMPIEZAN LAS PRUEBAS > #################
 #################################################################
 
-# En esta prueba se validan todos los alerts
+@allure.severity(allure.severity_level.MINOR)
+@allure.description("""En esta prueba se validan todos los alerts""")
 def test_alerts():
 
     # Hace clic en el botón 1

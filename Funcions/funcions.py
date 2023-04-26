@@ -8,7 +8,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 t = 0.2
 
-
 class Global_Funcions:
 
     def __init__(self, driver):
@@ -18,7 +17,7 @@ class Global_Funcions:
     def getURL(self, url):
         try:
             self.driver.get(url)
-            time.sleep(t)
+            self.driver.implicitly_wait(5)
             self.driver.maximize_window()
             print("\nPágina abierta :" + str(url))
         except:
@@ -53,13 +52,19 @@ class Global_Funcions:
 
     # Busca un elemento por tag_name
     def search_tag_name(self, tag):
-        elemento = self.driver.find_elements(by=By.TAG_NAME, value=tag)
-        return elemento
+        try:
+            elemento = self.driver.find_elements(by=By.TAG_NAME, value=tag)
+            return elemento
+        except:
+            print("No se encontró ningún elemento con tag name: ", tag)
 
     # Busca un elemento por CSS Selector
     def search_css_selector(self, CSS):
-        elemento_css_selector = self.driver.find_elements(by=By.CSS_SELECTOR, value=CSS)
-        return  elemento_css_selector
+        try:
+            elemento_css_selector = self.driver.find_elements(by=By.CSS_SELECTOR, value=CSS)
+            return elemento_css_selector
+        except:
+            print("No se encontró ningún elemento con CSS_Selector: ", CSS)
 
     # Escribe en un elemento WEB
     def writeXP(self, XPATH, Texto):
@@ -126,8 +131,11 @@ class Global_Funcions:
 
     # Devuelve el atributo Clase de un elemento WEB
     def clase(self, XPATH):
-        clase = self.driver.find_element(by=By.XPATH, value=XPATH).get_attribute('class')
-        return clase
+        try:
+            clase = self.driver.find_element(by=By.XPATH, value=XPATH).get_attribute('class')
+            return clase
+        except:
+            print("No se ha encontrado el atributo clase en: ", XPATH)
 
     # Este método devuelve el texto de una clase
     def getText(self, XPATH):
@@ -141,12 +149,27 @@ class Global_Funcions:
             return texto
         except:
             print("No se pudo obtener el texto en ", XPATH)
+            # Intenta conseguir el texto por JavaScript
+            self.get_text_java_script(XPATH)
+
+    # Usando JavaScript para obtener el texto del elemento
+    def get_text_java_script(self, XPATH):
+        try:
+            element = self.driver.find_element(by=By.XPATH, value=XPATH)
+            element_text = self.driver.execute_script("return arguments[0].textContent", element)
+            print("Texto encontrado con JS en:", XPATH)
+            return element_text
+        except:
+            print("No se pudo obtener el texto por JS ", XPATH)
 
     # Este método busca los elementos de una clase por su nombre
     def buscarElementosNombreClase(self, XPATH, VALUE):
-        valor = self.searchXP(XPATH)
-        datos_tabla = valor.find_elements(by=By.CLASS_NAME, value=VALUE)
-        return datos_tabla
+        try:
+            valor = self.searchXP(XPATH)
+            datos_tabla = valor.find_elements(by=By.CLASS_NAME, value=VALUE)
+            return datos_tabla
+        except:
+            print("No se han encontrado los nombres de clase ", VALUE)
 
     # Este método sirve para localizar los links de una Web
     def enlaces(self):
@@ -161,3 +184,21 @@ class Global_Funcions:
         self.driver.execute_script("document.body.style.zoom = '{}';".format(0.7))
         wait = WebDriverWait(self.driver, 5)  # Configura un WebDriverWait con un tiempo de espera máximo de 5 segundos
         wait.until(EC.presence_of_element_located((By.XPATH, "//*[contains(@style, 'zoom: 0.7')]")))
+
+    # Busca elementos por nombre de clase
+    def search_elements_by_class_name(self, ClassName):
+        try:
+            elemento = self.driver.find_elements(by=ClassName, value=ClassName)
+            print(str(len(elemento) + " elementos encontrados con nombre clase " + ClassName))
+            return elemento
+        except:
+            print("No se han encontrado elementos por nombre de clase: ", ClassName)
+
+    # Busca un elemento por nombre de clase
+    def search_element_by_class_name(self, ClassName):
+        try:
+            elemento = self.driver.find_elements(by=ClassName, value=ClassName)
+            print("elemento encontrados con nombre clase " + ClassName)
+            return elemento
+        except:
+            print("No se han encontrado ningún elemento por nombre de clase: ", ClassName)
