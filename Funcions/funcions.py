@@ -5,6 +5,7 @@ from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 
 t = 0.2
 
@@ -165,9 +166,9 @@ class Global_Funcions:
     # Este método busca los elementos de una clase por su nombre
     def buscarElementosNombreClase(self, XPATH, VALUE):
         try:
-            valor = self.searchXP(XPATH)
-            datos_tabla = valor.find_elements(by=By.CLASS_NAME, value=VALUE)
-            return datos_tabla
+            elemento = self.searchXP(XPATH)
+            lista_elementos = elemento.find_elements(by=By.CLASS_NAME, value=VALUE)
+            return lista_elementos
         except:
             print("No se han encontrado los nombres de clase ", VALUE)
 
@@ -188,17 +189,21 @@ class Global_Funcions:
     # Busca elementos por nombre de clase
     def search_elements_by_class_name(self, ClassName):
         try:
-            elemento = self.driver.find_elements(by=ClassName, value=ClassName)
-            print(str(len(elemento) + " elementos encontrados con nombre clase " + ClassName))
+            elemento = self.driver.find_elements(by=By.CLASS_NAME, value=ClassName)
+            print(str(len(elemento)) + " elementos encontrados con nombre clase " + ClassName)
             return elemento
         except:
             print("No se han encontrado elementos por nombre de clase: ", ClassName)
 
-    # Busca un elemento por nombre de clase
-    def search_element_by_class_name(self, ClassName):
+    # Pulsa enter
+    def key_enter(self, XPATH):
+        self.searchXP(XPATH).send_keys(Keys.ENTER)
+
+        # Busca un elemento por nombre de clase (SIN USO)
+    """def search_element_by_class_name(self, ClassName):
         try:
-            elemento = self.driver.find_elements(by=ClassName, value=ClassName)
+            elemento = self.driver.find_element(by=ClassName, value=ClassName)
             print("elemento encontrados con nombre clase " + ClassName)
             return elemento
         except:
-            print("No se han encontrado ningún elemento por nombre de clase: ", ClassName)
+            print("No se han encontrado ningún elemento por nombre de clase: ", ClassName)"""
