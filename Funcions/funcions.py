@@ -199,6 +199,16 @@ class Global_Funcions:
     def key_enter(self, XPATH):
         self.searchXP(XPATH).send_keys(Keys.ENTER)
 
+    # Obtén el valor de un atributo concreto
+    def get_attribute(self, xpath, value):
+        try:
+            elemento = self.searchXP(xpath)
+            valor = elemento.get_attribute(value)
+            print ("Atributo encontrado: ", valor)
+            return valor
+        except:
+            print("No se ha encontrado el atributo "+value+" en el xpath "+xpath)
+
         # Busca un elemento por nombre de clase (SIN USO)
     """def search_element_by_class_name(self, ClassName):
         try:
