@@ -82,7 +82,7 @@ def test_select_time():
 después la introduce y la válida""")
 def test_select_hours():
     # Genera una fecha aleatoria
-    fecha_aleatoria = genera_fecha_aleatoria()
+    fecha_aleatoria = genera_fecha_y_hora_aleatoria()
 
     # Despliega el datepicker
     funciones.Click(ruta.date_picker_2)

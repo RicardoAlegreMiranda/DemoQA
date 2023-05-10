@@ -17,6 +17,23 @@ def genera_fecha_aleatoria():
                                                             and (year % 100 != 0 or year % 400 == 0) else 28
     day = random.randint(1, last_day)
 
+    # Crear un objeto datetime con los valores generados
+    fecha = datetime.datetime(year=year, month=month, day=day)
+    return fecha
+
+
+def genera_fecha_y_hora_aleatoria():
+    # Generar un año aleatorio entre 1900 y el año actual
+    year = random.randint(1900, datetime.datetime.now().year)
+
+    # Generar un mes aleatorio
+    month = random.randint(1, 12)
+
+    # Generar un día aleatorio, teniendo en cuenta el mes y el año
+    last_day = 31 if month in [1, 3, 5, 7, 8, 10, 12] else 30 if month in [4, 6, 9, 11] else 29 if year % 4 == 0 \
+                                                            and (year % 100 != 0 or year % 400 == 0) else 28
+    day = random.randint(1, last_day)
+
     # Generar una hora aleatoria en intervalos de 15 minutos
     hour = random.randint(1, 24)  # formato de 24 horas
     minute = random.randint(0, 3) * 15  # intervalos de 15 minutos
