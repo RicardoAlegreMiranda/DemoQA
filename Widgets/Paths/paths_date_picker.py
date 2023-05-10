@@ -4,4 +4,11 @@ class DatePicker:
     month = "//select[contains(@class,'react-datepicker__month-select')]"
     date_picker = "//*[@id='datePickerMonthYear']/div[1]/div"
     date = "//*[@id='datePickerMonthYearInput']"
-
+    date_picker_2 = "//*[@id='dateAndTimePicker']/div[1]/div"
+    mount_2 = "//*[@id='dateAndTimePicker']/div[2]/div[2]/div/div/div[2]/div[1]/div[2]/div[1]/div/span[1]"
+    year_2 = "//*[@id='dateAndTimePicker']/div[2]/div[2]/div/div/div[2]/div[1]/div[2]/div[2]/div"
+    down = "//*[@id='dateAndTimePicker']/div[2]/div[2]/div/div/div[2]/div[1]/div[2]/div[2]/div[1]/div[13]/a"
+    up = "//*[@id='dateAndTimePicker']/div[2]/div[2]/div/div/div[2]/div[1]/div[2]/div[2]/div[1]/div[1]/a"
+    time = "//*[@id='dateAndTimePicker']/div[2]/div[2]/div/div/div[3]/div[2]/div/ul"
+    time_selected = "//*[@id='dateAndTimePicker']/div[2]/div[2]/div/div/div[3]/div[2]/div/ul/li[48]"
+    date_time_box = "//*[@id='dateAndTimePickerInput']"
