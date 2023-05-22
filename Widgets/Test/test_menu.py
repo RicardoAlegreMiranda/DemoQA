@@ -51,7 +51,7 @@ def test_menu():
         assert funciones.searchXP(item).text == str(esperados[n])
 
         # Hace una captura de pantalla con el submenú desplegado (posición 7 del listado)
-        if n == 6:
+        if n == 5:
             # Capturar de pantalla con fecha actual
             funciones.capturar(obtener_fecha_hora_actual())
 
