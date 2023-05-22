@@ -2,6 +2,7 @@ import time
 
 import allure
 from allure_commons.types import AttachmentType
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -66,6 +67,16 @@ class Global_Funcions:
             return elemento_css_selector
         except:
             print("No se encontró ningún elemento con CSS_Selector: ", CSS)
+
+    # Busca un atributo CSS de un elemento
+    def search_css_property(self, XPATH, CSS_Attribute):
+        try:
+            elemento = self.searchXP(XPATH)
+            attribute = elemento.value_of_css_property(CSS_Attribute)
+            print("Atributo encontrado: ", attribute)
+            return attribute
+        except:
+            print("No se ha encontrado el atributo CSS", CSS_Atributte)
 
     # Escribe en un elemento WEB
     def writeXP(self, XPATH, Texto):
@@ -209,11 +220,15 @@ class Global_Funcions:
         except:
             print("No se ha encontrado el atributo "+value+" en el xpath "+xpath)
 
-        # Busca un elemento por nombre de clase (SIN USO)
-    """def search_element_by_class_name(self, ClassName):
+    # Mueve el ratón encima de un elemento
+    def move_mouse_to_element(self, XPATH):
         try:
-            elemento = self.driver.find_element(by=ClassName, value=ClassName)
-            print("elemento encontrados con nombre clase " + ClassName)
-            return elemento
+            # Busca el elemento por XPATH
+            elemento = self.searchXP(XPATH)
+
+            # Mueve el ratón sobre el elemento
+            action = ActionChains(self.driver)
+            action.move_to_element(elemento).perform()
+            print("Se ha movido el ratón al elemento ", XPATH)
         except:
-            print("No se han encontrado ningún elemento por nombre de clase: ", ClassName)"""
+            print("No se ha podido mover el ratón encima de ", XPATH)
