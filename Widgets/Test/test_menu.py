@@ -48,7 +48,7 @@ def test_menu():
     n = 0
     for item in items:
         funciones.move_mouse_to_element(item)
-        assert funciones.searchXP(item).text == esperados[n]
+        assert funciones.searchXP(item).text == str(esperados[n])
 
         # Hace una captura de pantalla con el submenú desplegado (posición 7 del listado)
         if n == 6:
