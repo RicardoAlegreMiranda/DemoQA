@@ -40,6 +40,10 @@ def teardown_function():
 @allure.severity(allure.severity_level.MINOR)
 @allure.description("""Se valida que se puede desplegar el menú y que tiene los datos esperados """)
 def test_menu():
+
+    # Cambia el zoom de la web para evitar error  al desplegar el menú
+    funciones.cambia_zoom()
+
     # Obtiene los XPATH
     items = ruta.list_items
 
