@@ -30,7 +30,7 @@ def setup_function():
     # Se abre el navegador con la URL indicada
     funciones.getURL(ruta.Url)
 
-    funciones.cambia_zoom()  # Cambia el zoom a 0.7
+    funciones.cambia_zoom(0.7)  # Cambia el zoom a 0.7
 
 # Esta es la función que da cierre a cada prueba
 def teardown_function():

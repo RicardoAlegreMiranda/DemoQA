@@ -192,10 +192,10 @@ class Global_Funcions:
             print("No se encuentran enlaces")
 
     # Este método cambia el Zoom de la página actual a 0.7 para que todos los elementos sean visibles
-    def cambia_zoom(self):
-        self.driver.execute_script("document.body.style.zoom = '{}';".format(0.7))
+    def cambia_zoom(self, zoom):
+        self.driver.execute_script("document.body.style.zoom = '{}';".format(zoom))
         wait = WebDriverWait(self.driver, 5)  # Configura un WebDriverWait con un tiempo de espera máximo de 5 segundos
-        wait.until(EC.presence_of_element_located((By.XPATH, "//*[contains(@style, 'zoom: 0.7')]")))
+        wait.until(EC.presence_of_element_located((By.XPATH, "//*[contains(@style, 'zoom: "+str(zoom)+"')]")))
 
     # Busca elementos por nombre de clase
     def search_elements_by_class_name(self, ClassName):

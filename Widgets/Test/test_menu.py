@@ -26,7 +26,6 @@ def setup_function():
     funciones = funcions.Global_Funcions(driver)
     funciones.getURL(ruta.URL)
 
-
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
     print("Fin de la prueba")
@@ -42,7 +41,7 @@ def teardown_function():
 def test_menu():
 
     # Cambia el zoom de la web para evitar error  al desplegar el menú
-    funciones.cambia_zoom()
+    funciones.cambia_zoom(1)
 
     # Obtiene los XPATH
     items = ruta.list_items
@@ -59,6 +58,7 @@ def test_menu():
         if n == 5:
             # Capturar de pantalla con fecha actual
             funciones.capturar(obtener_fecha_hora_actual())
+
         assert funciones.searchXP(item).text == str(esperados[n])
 
         time.sleep(.2)

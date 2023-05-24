@@ -110,7 +110,7 @@ def test_Formulario():
     actions.perform()
 
     # Cambia el Zoom a 0.7 para evitar que el botón submit quede escondido
-    funciones.cambia_zoom()
+    funciones.cambia_zoom(0.7)
 
     # Intenta hacer clic en submit
     try:
