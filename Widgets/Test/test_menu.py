@@ -50,12 +50,12 @@ def test_menu():
     n = 0
     for item in items:
         funciones.move_mouse_to_element(item)
-        assert funciones.searchXP(item).text == str(esperados[n])
-        time.sleep(.2)
 
         # Hace una captura de pantalla con el submenú desplegado (posición 7 del listado)
         if n == 4:
             # Capturar de pantalla con fecha actual
             funciones.capturar(obtener_fecha_hora_actual())
+        assert funciones.searchXP(item).text == str(esperados[n])
 
+        time.sleep(.2)
         n += 1
