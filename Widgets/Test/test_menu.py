@@ -38,7 +38,7 @@ def teardown_function():
 #################################################################
 
 @allure.severity(allure.severity_level.MINOR)
-@allure.description("""Se valida que se puede desplegar el menú y que tiene los datos esperados""")
+@allure.description("""Se valida que se puede desplegar el menú y que tiene los datos esperados """)
 def test_menu():
     # Obtiene los XPATH
     items = ruta.list_items
@@ -52,7 +52,7 @@ def test_menu():
         funciones.move_mouse_to_element(item)
 
         # Hace una captura de pantalla con el submenú desplegado (posición 7 del listado)
-        if n == 4:
+        if n == 5:
             # Capturar de pantalla con fecha actual
             funciones.capturar(obtener_fecha_hora_actual())
         assert funciones.searchXP(item).text == str(esperados[n])
