@@ -41,7 +41,7 @@ def teardown_function():
 def test_menu():
 
     # Cambia el zoom de la web para evitar error  al desplegar el menú
-    funciones.cambia_zoom(1)
+    funciones.cambia_zoom(0.7)
 
     # Obtiene los XPATH
     items = ruta.list_items

@@ -193,9 +193,13 @@ class Global_Funcions:
 
     # Este método cambia el Zoom de la página actual a 0.7 para que todos los elementos sean visibles
     def cambia_zoom(self, zoom):
-        self.driver.execute_script("document.body.style.zoom = '{}';".format(zoom))
-        wait = WebDriverWait(self.driver, 5)  # Configura un WebDriverWait con un tiempo de espera máximo de 5 segundos
-        wait.until(EC.presence_of_element_located((By.XPATH, "//*[contains(@style, 'zoom: "+str(zoom)+"')]")))
+        try:
+            self.driver.execute_script("document.body.style.zoom = '{}';".format(zoom))
+            wait = WebDriverWait(self.driver, 5)
+            wait.until(EC.presence_of_element_located((By.XPATH, "//*[contains(@style, 'zoom: "+str(zoom)+"')]")))
+            print("Se ha cambiado el zoom a ", zoom)
+        except:
+            print("No se ha cambiado el zoom a ", zoom)
 
     # Busca elementos por nombre de clase
     def search_elements_by_class_name(self, ClassName):
@@ -215,7 +219,7 @@ class Global_Funcions:
         try:
             elemento = self.searchXP(xpath)
             valor = elemento.get_attribute(value)
-            print ("Atributo encontrado: ", valor)
+            print("Atributo encontrado: ", valor)
             return valor
         except:
             print("No se ha encontrado el atributo "+value+" en el xpath "+xpath)
