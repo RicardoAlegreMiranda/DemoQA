@@ -22,8 +22,9 @@ class Global_Funcions:
             self.driver.implicitly_wait(5)
             self.driver.maximize_window()
             print("\nPágina abierta :" + str(url))
-        except:
+        except Exception as e:
             print("No se pudo abrir la página: " + url)
+            print(f"Detalles del error: {str(e)}")
 
     # Busca un elementoWeb por Xpath
     def searchXP(self, XPATH):
@@ -35,8 +36,9 @@ class Global_Funcions:
             print("Encontrado XPATH " + XPATH + "\n")
             time.sleep(t)
             return elemento
-        except:
+        except Exception as e:
             print("No se ha encontrado elemento XPATH: " + XPATH + "\n")
+            print(f"Detalles del error: {str(e)}")
             return False
 
     # Busca un elemento por ID
@@ -49,24 +51,27 @@ class Global_Funcions:
             print("Encontrado ID " + ID + "\n")
             time.sleep(t)
             return elemento
-        except:
+        except Exception as e:
             print("No se ha encontrado elemento ID: " + ID + "\n")
+            print(f"Detalles del error: {str(e)}")
 
     # Busca un elemento por tag_name
     def search_tag_name(self, tag):
         try:
             elemento = self.driver.find_elements(by=By.TAG_NAME, value=tag)
             return elemento
-        except:
+        except Exception as e:
             print("No se encontró ningún elemento con tag name: ", tag)
+            print(f"Detalles del error: {str(e)}")
 
     # Busca un elemento por CSS Selector
     def search_css_selector(self, CSS):
         try:
             elemento_css_selector = self.driver.find_elements(by=By.CSS_SELECTOR, value=CSS)
             return elemento_css_selector
-        except:
+        except Exception as e:
             print("No se encontró ningún elemento con CSS_Selector: ", CSS)
+            print(f"Detalles del error: {str(e)}")
 
     # Busca un atributo CSS de un elemento
     def search_css_property(self, XPATH, CSS_Attribute):
@@ -75,8 +80,9 @@ class Global_Funcions:
             attribute = elemento.value_of_css_property(CSS_Attribute)
             print("Atributo encontrado: ", attribute)
             return attribute
-        except:
+        except Exception as e:
             print("No se ha encontrado el atributo CSS", CSS_Atributte)
+            print(f"Detalles del error: {str(e)}")
 
     # Escribe en un elemento WEB
     def writeXP(self, XPATH, Texto):
@@ -91,8 +97,9 @@ class Global_Funcions:
             # Aviso de que se mandó correctamente
             print("Escrito: " + Texto + " En XPATH " + XPATH + "\n")
             time.sleep(t)
-        except:
+        except Exception as e:
             print("No se ha podido escribir en elemento XPATH " + XPATH + " el texto " + str(Texto) + "\n")
+            print(f"Detalles del error: {str(e)}")
 
     # Hace click en un elemento
     def Click(self, XPATH):
@@ -111,9 +118,10 @@ class Global_Funcions:
             # Aviso de que se hace clic
             print("Clic: " + XPATH + "\n")
             time.sleep(t)
-        except:
+        except Exception as e:
             # Intenta hacer clic por ID en lugar de XPATH
             print("No se pudo hacer Clic_by_xpath: " + XPATH + "\n")
+            print(f"Detalles del error: {str(e)}")
             self.click_script(XPATH)  # Si falla el método principal intenta hacer click de manera alternativa
 
     # Método para hacer click por Script si falla el método principal
@@ -123,31 +131,35 @@ class Global_Funcions:
             element = self.driver.find_element(by=By.XPATH, value=xpath)
             self.driver.execute_script("arguments[0].click();", element)
             print("Click_script: " + xpath)
-        except:
+        except Exception as e:
             print("No se pudo hacer click por script: " + xpath)
+            print(f"Detalles del error: {str(e)}")
 
     # Este método permite borrar los datos de un campo
     def Limpiar(self, XPATH):
         try:
             self.driver.find_element(by=By.XPATH, value=XPATH).clear()
-        except:
+        except Exception as e:
             print("No se pudo borrar los datos del elemento " + XPATH)
+            print(f"Detalles del error: {str(e)}")
 
     # Este método permite hacer captura de pantalla de la pantalla actual
     def capturar(self, Nombre):
         try:
             allure.attach(self.driver.get_screenshot_as_png(), name=Nombre, attachment_type=AttachmentType.PNG)
             print("Realizada captura de pantalla " + Nombre)
-        except:
+        except Exception as e:
             print("No se pudo realizar la captura de pantalla")
+            print(f"Detalles del error: {str(e)}")
 
     # Devuelve el atributo Clase de un elemento WEB
     def clase(self, XPATH):
         try:
             clase = self.driver.find_element(by=By.XPATH, value=XPATH).get_attribute('class')
             return clase
-        except:
+        except Exception as e:
             print("No se ha encontrado el atributo clase en: ", XPATH)
+            print(f"Detalles del error: {str(e)}")
 
     # Este método devuelve el texto de una clase
     def getText(self, XPATH):
@@ -159,8 +171,9 @@ class Global_Funcions:
             # Encuentra el elemento, obtiene el texto y lo devuelve
             texto = self.driver.find_element(by=By.XPATH, value=XPATH).text
             return texto
-        except:
+        except Exception as e:
             print("No se pudo obtener el texto en ", XPATH)
+            print(f"Detalles del error: {str(e)}")
             # Intenta conseguir el texto por JavaScript
             self.get_text_java_script(XPATH)
 
@@ -171,8 +184,9 @@ class Global_Funcions:
             element_text = self.driver.execute_script("return arguments[0].textContent", element)
             print("Texto encontrado con JS en:", XPATH)
             return element_text
-        except:
+        except Exception as e:
             print("No se pudo obtener el texto por JS ", XPATH)
+            print(f"Detalles del error: {str(e)}")
 
     # Este método busca los elementos de una clase por su nombre
     def buscarElementosNombreClase(self, XPATH, VALUE):
@@ -180,16 +194,18 @@ class Global_Funcions:
             elemento = self.searchXP(XPATH)
             lista_elementos = elemento.find_elements(by=By.CLASS_NAME, value=VALUE)
             return lista_elementos
-        except:
+        except Exception as e:
             print("No se han encontrado los nombres de clase ", VALUE)
+            print(f"Detalles del error: {str(e)}")
 
     # Este método sirve para localizar los links de una Web
     def enlaces(self):
         try:
             enlaces = self.driver.find_elements(by=By.TAG_NAME, value="a")
             return enlaces
-        except:
+        except Exception as e:
             print("No se encuentran enlaces")
+            print(f"Detalles del error: {str(e)}")
 
     # Este método cambia el Zoom de la página actual a 0.7 para que todos los elementos sean visibles
     def cambia_zoom(self, zoom):
@@ -198,17 +214,19 @@ class Global_Funcions:
             wait = WebDriverWait(self.driver, 5)
             wait.until(EC.presence_of_element_located((By.XPATH, "//*[contains(@style, 'zoom: "+str(zoom)+"')]")))
             print("Se ha cambiado el zoom a ", zoom)
-        except:
+        except Exception as e:
             print("No se ha cambiado el zoom a ", zoom)
-
+            print(f"Detalles del error: {str(e)}")
     # Busca elementos por nombre de clase
+
     def search_elements_by_class_name(self, ClassName):
         try:
             elemento = self.driver.find_elements(by=By.CLASS_NAME, value=ClassName)
             print(str(len(elemento)) + " elementos encontrados con nombre clase " + ClassName)
             return elemento
-        except:
+        except Exception as e:
             print("No se han encontrado elementos por nombre de clase: ", ClassName)
+            print(f"Detalles del error: {str(e)}")
 
     # Pulsa enter
     def key_enter(self, XPATH):
@@ -221,8 +239,9 @@ class Global_Funcions:
             valor = elemento.get_attribute(value)
             print("Atributo encontrado: ", valor)
             return valor
-        except:
+        except Exception as e:
             print("No se ha encontrado el atributo "+value+" en el xpath "+xpath)
+            print(f"Detalles del error: {str(e)}")
 
     # Mueve el ratón encima de un elemento
     def move_mouse_to_element(self, XPATH):
@@ -232,7 +251,10 @@ class Global_Funcions:
 
             # Mueve el ratón sobre el elemento
             action = ActionChains(self.driver)
+
+            # Mueve el ratón al lugar esperado
             action.move_to_element(elemento).perform()
             print("Se ha movido el ratón al elemento ", XPATH)
-        except:
+        except Exception as e:
             print("No se ha podido mover el ratón encima de ", XPATH)
+            print(f"Detalles del error: {str(e)}")

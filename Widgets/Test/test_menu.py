@@ -41,7 +41,7 @@ def teardown_function():
 def test_menu():
 
     # Cambia el zoom de la web para evitar error  al desplegar el menú
-    funciones.cambia_zoom(0.7)
+    #funciones.cambia_zoom(0.7)
 
     # Obtiene los XPATH
     items = ruta.list_items
@@ -53,7 +53,6 @@ def test_menu():
     n = 0
     for item in items:
         funciones.move_mouse_to_element(item)
-
         # Hace una captura de pantalla con el submenú desplegado (posición 7 del listado)
         if n == 5:
             # Capturar de pantalla con fecha actual

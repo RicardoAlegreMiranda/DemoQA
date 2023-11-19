@@ -1,7 +1,7 @@
 class menu:
     URL = "https://demoqa.com/menu#"
     main_item_1 = "//a[@href='#'][contains(.,'Main Item 1')]"
-    main_item_2 = "//a[@href='#'][contains(.,'Main Item 2')]"
+    main_item_2 = "//*[@id='nav']/li[2]/a"
     main_item_3 = "//a[@href='#'][contains(.,'Main Item 3')]"
     sub_item_1 = "(//a[@href='#'][contains(.,'Sub Item')])[1]"
     sub_item_2 = "(//a[@href='#'][contains(.,'Sub Item')])[2]"
