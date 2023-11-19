@@ -26,6 +26,7 @@ def setup_function():
     funciones = funcions.Global_Funcions(driver)
     funciones.getURL(ruta.URL)
 
+
 # Esta es la función que da cierre a cada prueba
 def teardown_function():
     print("Fin de la prueba")
@@ -39,10 +40,8 @@ def teardown_function():
 @allure.severity(allure.severity_level.MINOR)
 @allure.description("""Se valida que se puede desplegar el menú y que tiene los datos esperados """)
 def test_menu():
-
     # Cambia el zoom de la web para evitar error  al desplegar el menú
-    #funciones.cambia_zoom(0.7)
-
+    funciones.cambia_zoom(0.5)
     # Obtiene los XPATH
     items = ruta.list_items
 
@@ -54,7 +53,6 @@ def test_menu():
     for item in items:
         funciones.move_mouse_to_element(item)
         # Hace una captura de pantalla con el submenú desplegado (posición 7 del listado)
-        # Capturar de pantalla con fecha actual
         funciones.capturar(obtener_fecha_hora_actual())
         """
         if n == 5:
