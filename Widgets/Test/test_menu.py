@@ -54,9 +54,12 @@ def test_menu():
     for item in items:
         funciones.move_mouse_to_element(item)
         # Hace una captura de pantalla con el submenú desplegado (posición 7 del listado)
+        # Capturar de pantalla con fecha actual
+        funciones.capturar(obtener_fecha_hora_actual())
+        """
         if n == 5:
             # Capturar de pantalla con fecha actual
-            funciones.capturar(obtener_fecha_hora_actual())
+            funciones.capturar(obtener_fecha_hora_actual())"""
 
         assert funciones.searchXP(item).text == str(esperados[n])
 
