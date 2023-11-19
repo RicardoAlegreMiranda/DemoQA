@@ -35,7 +35,7 @@ def genera_fecha_y_hora_aleatoria():
     day = random.randint(1, last_day)
 
     # Generar una hora aleatoria en intervalos de 15 minutos
-    hour = random.randint(1, 24)  # formato de 24 horas
+    hour = random.randint(0, 23)  # formato de 24 horas (de 0 a 23 horas)
     minute = random.randint(0, 3) * 15  # intervalos de 15 minutos
 
     # Crear un objeto datetime con los valores generados
