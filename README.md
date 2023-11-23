@@ -1,5 +1,5 @@
 
-# Automatización DEMO-QA por Ricardo Alegre
+# Automatización DEMO-QA 
 
 Este proyecto contiene el código fuente necesario para automatizar las pruebas de regresión de las funcionalidades de la Web pública https://demoqa.com/elements y https://demoqa.com/automation-practice-form
 
